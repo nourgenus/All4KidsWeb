@@ -38,10 +38,4 @@ supprimergarderie:
 modifiergarderie:
     path:     /modifiergarderie/{id}/
     defaults: { _controller: BlogBundle:backblog:modifiergarderie }
-CalculMontant:
-    path:     /Calcul/{id}/{nbr}
-    defaults: { _controller: BlogBundle:Blog:CalculMontant }
-affichergarderie1:
-    path:     /affichergarderie1/{id}/
-    defaults: { _controller: BlogBundle:blog:affichergarderie1 }
 
