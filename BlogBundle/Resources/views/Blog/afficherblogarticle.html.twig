@@ -1,0 +1,122 @@
+{% extends '::base_interlocuteur.html.twig' %}
+{% block fos_user_content %}
+
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="{{ asset('index.html') }}">Home</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <a class="all" href="#">All Posts</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <span class="current">Standard Post</span>
+            </div>
+            <h3 class="pageTitle h3">{{ articles.titre }}</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section id="mobile_tap_hover" class="itemPage post post_format_standard postAlter hrShadow no_padding">
+                    <div class="container">
+                        <article class="post_content">
+                            <div class="thumb imgNav taphover">
+                                <img alt="" src="{{ asset('images/blog/'~articles.titre~'_'~articles.id~'.png') }}">
+                                <a class="taphover itemPrev" href="#">
+                      <span class="itInf">
+                        <span class="titleItem">Previous item</span>
+                        <span class="undertitleItem">What Should Parents Know...</span>
+                      </span>
+                                </a>
+                                <a class="taphover itemNext" href="#">
+                      <span class="itInf">
+                        <span class="titleItem">Next item</span>
+                        <span class="undertitleItem">When to Call the Doctor</span>
+                      </span>
+                                </a>
+                            </div>
+
+                            <h1 class="post_title entry-title">{{ articles.titre}}</h1>
+
+                            <div class="post_text_area">
+                                <p>{{ articles.contenu }}</p>
+                                <li class="squareButton light ico">
+                                    <a class="icon-eye" title="Views - 116" href="#">{{ articles.vue }}</a>
+                                </li>
+                                <div class="itemInfo">
+                                    <div class="postSharing inited">
+
+                                        <ul>
+                                            <li class="squareButton light ico share">
+                                                <a class="icon-share shareDrop" title="Share" href="#">Share</a>
+
+                                                <ul class="share-social shareDrop inited" style="">
+                                                    <li>
+                                                        <a href="#" class="share-item" onclick="window.open('http://pinterest.com', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=480, height=400, toolbar=0, status=0'); return false;">
+                                                            <img src="{{ asset('images/pinterest_color.png') }}" alt="pinterest">Pinterest</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="share-item" onclick="window.open('https://twitter.com', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=480, height=400, toolbar=0, status=0'); return false;">
+                                                            <img src="{{ asset('images/twitter_color.png') }}" alt="twitter">Twitter</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="share-item" onclick="window.open('http://www.facebook.com', '_blank', 'scrollbars=0, resizable=1, menubar=0, left=100, top=100, width=480, height=400, toolbar=0, status=0'); return false;">
+                                                            <img src="{{ asset('images/facebook_color.png') }}" alt="facebook">Facebook</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="post_info infoPost">
+                                        Posted
+                                        <a href="#" class="post_date date updated">August 29, 2014</a>
+                                        <span class="separator">|</span>
+                                        <span class="post_cats">
+                          <a class="cat_link" href="#">Classic (4 columns),</a>
+                          <a class="cat_link" href="#">Grid (4 columns,</a>
+                          <a class="cat_link" href="#">Masonry (4 columns)</a>
+                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </article>
+                    </div>
+                </section>
+
+
+
+
+
+                <section class="no_padding formValid">
+                    <div class="container">
+                        <h2>Leave a Reply</h2>
+                        <div class="commForm commentsForm">
+                            <div id="respond" class="comment-respond">
+                                <h3 id="reply-title" class="comment-reply-title">
+                                    <small>
+                                        <a rel="nofollow" id="cancel-comment-reply-link" href="#">Cancel reply</a>
+                                    </small>
+                                </h3>
+                                <p class="must-log-in">You must be <a href="#">logged in</a> to post a comment.</p>
+                            </div>
+                            <div class="nav_comments"></div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

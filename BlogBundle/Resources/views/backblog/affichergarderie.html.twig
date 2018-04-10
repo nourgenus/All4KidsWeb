@@ -1,0 +1,57 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">List des garderies</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+
+                <table class="table no-margin">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Adresse</th>
+
+                        <th>M</th>
+                        <th>S</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for garderie in garderies %}
+                        <tr>
+                            <td>{{ garderie.nom }}</td>
+                            <td>{{ garderie.description }}</td>
+                            <td>{{ garderie.adresse  }} </td>
+                            <td><span class="label label-info"> <a href="{{ path('modifiergarderie', { 'id': garderie.id }) }}">Modifier</a></span></td>
+                            <td><span class="label label-info"><a href="{{ path('supprimergarderie', { 'id': garderie.id }) }}">Supprimer</a></span></td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- /.table-responsive -->
+        </div>
+
+
+
+
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <a href="{{ path('ajoutergarderie') }}">Ajouter Garderie</a>
+
+        </div>
+        <!-- /.box-footer -->
+    </div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Créer un article</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Titre:</label>
+                                <input type="text" name="titre" class="form-control" id="" placeholder="titre de l'article">
+                            </div>
+                            <div class="form-group">
+                                <label>Catégorie:</label>
+                                <select name="categorie" class="form-control">
+                                    <option>Alimentation</option>
+                                    <option>Education</option>
+                                    <option>Autre..</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Contenu:</label>
+                                <textarea class="form-control" name="contenu" rows="3" placeholder="contebu de l'article"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Image:</label>
+                                <input type="file" name="imgblog" class="form-control" id="" >
+                            </div>
+
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+{% endblock %}
+
+

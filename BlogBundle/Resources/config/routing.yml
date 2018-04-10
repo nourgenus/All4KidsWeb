@@ -1,0 +1,47 @@
+blog_homepage:
+    path:     /
+    defaults: { _controller: BlogBundle:Default:index }
+afficherblog:
+    path:     /afficherb
+    defaults: { _controller: BlogBundle:blog:afficherb }
+
+afficherblogarticle:
+    path:     /afficherarticle/{id}/
+    defaults: { _controller: BlogBundle:blog:afficherarticle }
+afficherblogtrier:
+    path:     /afficherblogtrier
+    defaults: { _controller: BlogBundle:blog:afficherblogtrier }
+affichergarderie:
+    path:     /affichergarderie
+    defaults: { _controller: BlogBundle:blog:affichergarderie }
+ajouterarticle:
+    path:     /ajouterarticle
+    defaults: { _controller: BlogBundle:backblog:ajouterarticle }
+afficherarticle:
+    path:     /afficherarticle
+    defaults: { _controller: BlogBundle:backblog:afficherarticle }
+supprimerarticle:
+    path:     /supprimerarticle/{id}/
+    defaults: { _controller: BlogBundle:backblog:supprimerarticle }
+modifierarticle:
+    path:     /modifierarticle/{id}/
+    defaults: { _controller: BlogBundle:backblog:modifierarticle }
+affichergarderieback:
+    path:     /affichergarderieback
+    defaults: { _controller: BlogBundle:backblog:affichergarderie }
+ajoutergarderie:
+    path:     /ajoutergarderie
+    defaults: { _controller: BlogBundle:backblog:ajoutergarderie }
+supprimergarderie:
+    path:     /supprimergarderie/{id}/
+    defaults: { _controller: BlogBundle:backblog:supprimergarderie }
+modifiergarderie:
+    path:     /modifiergarderie/{id}/
+    defaults: { _controller: BlogBundle:backblog:modifiergarderie }
+CalculMontant:
+    path:     /Calcul/{id}/{nbr}
+    defaults: { _controller: BlogBundle:Blog:CalculMontant }
+affichergarderie1:
+    path:     /affichergarderie1/{id}/
+    defaults: { _controller: BlogBundle:blog:affichergarderie1 }
+

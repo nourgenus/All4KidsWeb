@@ -1,0 +1,208 @@
+{% extends '::base_interlocuteur.html.twig' %}
+{% block fos_user_content %}
+
+
+        <title>Garderies</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}"/>
+        <!--[if lt IE 9]>
+        <script src="{{ asset('js/vendor/html5.js') }}" type="text/javascript"> </script>
+        <![endif]-->
+        <link rel='stylesheet' href="{{ asset('public/css/__packed.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('public/css/fontello/css/fontello.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('public/css/fontello/css/animation.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('public/css/style.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('public/css/shortcodes.css') }}" type='text/css' media='all'/>
+        <link id="theme-skin-css" rel='stylesheet' href="{{ asset('public/css/kidscare.css') }}" type='text/css' media='all'/>
+        <style id='theme-skin-inline-css' type='text/css'></style>
+        <link rel='stylesheet' href="{{ asset('public/css/responsive.css') }}" type='text/css' media='all'/>
+
+
+
+        <!--<link rel='stylesheet' href='custom_tools/css/customizer.css' type='text/css' media='all'/>-->
+
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+        <div id="topOfPage" class="topTabsWrap">
+            <div class="main">
+                <div class="speedBar">
+                    <a class="home" href="index.html">Home</a>
+                    <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                    <a class="all" href="#">All Posts</a>
+                    <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                    <span class="current">{{ garderies.getNom() }}</span>
+                </div>
+                <h3 class="pageTitle h3">{{ garderies.getNom() }}</h3>
+            </div>
+        </div>
+
+        <div class="mainWrap without_sidebar">
+            <div class="content">
+
+                <div class="itemPageFullWrapper">
+
+                    <section id="mobile_tap_hover" class="itemPageFull post_format_standard">
+                        <div class="thumb imgNav taphover itemPageFullImage">
+                            <a class="taphover itemPrev" href="#">
+
+                                    <span class="itInf">
+
+									</span>
+                                </a>
+
+                            </a>
+                        </div>
+                        <div class="itemDescriptionWrap">
+                            <div class="main">
+                                <a href="#" class="toggleButton">
+                                </a>
+                                <a href="#" class="backClose">
+                                </a>
+                                <h1 class="post_title entry-title">{{ garderies.getNom() }}</h1>
+                                <div class="post_text_area toggleDescription">
+                                    <p>{{ garderies.getDescription() }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="main">
+
+                        <section class="no_padding">
+                            <div class="container">
+                                <div class="withMargin"></div>
+                                <div class="reviewBlock sc_tabs">
+                                    <div class="popularFiltr">
+
+
+                                        <div >
+                                            <h3 class="title">Donner le nombre de vos enfants</h3>
+                                            <input name="nbre" type="text" id="nbrEnfants" placeholder="Nombre d'enfants"><br>
+                                        </div>
+                                        <div class="squareButton sc_button_size sc_button_style_global global ico">
+                                            <button type="submit" name="ok" class="" onclick="Calculer()">Montant à payer</button>
+                                        </div>
+                                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+                                        <script >
+                                            function Calculer(){
+                                                var nbr = document.getElementById("nbrEnfants").value;
+                                                var urlEdit = "{{ path('CalculMontant', { 'id':garderies.id , 'nbr':'nbr'  }) }}";
+                                                urlEdit = urlEdit.replace("nbr", nbr);
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: urlEdit,
+                                                    ifModified:true,
+                                                    success: function(d){
+                                                        document.getElementById('resultat').innerHTML = "New" + d.newtarif + "DT";
+                                                    }
+                                                });
+                                            }
+                                        </script>
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="post_text_area hrShadow withMargin">
+                                    <div class="sc_section sc_alignright columns1_2 margin_bottom_small" >
+
+                                        <div class="sc_table sc_table_style_2 sc_table_size_big" style="margin-right: 250px">
+                                            <table >
+                                                <tr>
+
+                                                    <th>Prix</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ garderies.getPrix() }}</td>
+                                                </tr>
+
+
+                                            </table>
+
+
+                                        </div>
+
+
+
+
+                                    </div>
+                                    <div class="itemInfo">
+
+                                        <div class="postSharing">
+                                            <ul>
+
+                                                <div class="sc_skills sc_skills_counter" data-type="counter" data-subtitle="Skills">
+                                                    <div class="columnsWrap sc_skills_columns" >
+                                                        <div class="sc_skills_column columns1_4">
+                                                            <div class="sc_skills_item sc_skills_style_3 odd">
+                                                                <div class="sc_skills_count">
+                                                                    <div class="sc_skills_total" id="resultat" data-start="00" data-stop="0" data-step="10" data-max="1000" data-speed="18" data-duration="313" data-ed="">0</div>
+                                                                </div>
+                                                                <div class="sc_skills_info">Donner nbre </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="sc_skills sc_skills_counter" data-type="counter" data-subtitle="Skills">
+                                                    <div class="columnsWrap sc_skills_columns" >
+                                                        <div class="sc_skills_column columns1_4">
+                                                            <div class="sc_skills_item sc_skills_style_3 odd">
+                                                                <div class="sc_skills_count">
+                                                                    <div class="sc_skills_total" data-start="0" data-stop="{{ garderies.getPrix() }}" data-step="10" data-max="1000" data-speed="18" data-duration="313" data-ed="">0</div>
+                                                                </div>
+                                                                <div class="sc_skills_info">Tarif Original</div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+
+
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="upToScroll">
+            <a href="#" class="addBookmark icon-star-empty" title="Add the current page into bookmarks"> </a>
+            <a href="#" class="scrollToTop icon-up-open-big" title="Back to top"> </a>
+        </div>
+
+        <script type='text/javascript' src={{ asset('public/js/vendor/jquery-1.11.3.min.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/vendor/jquery-migrate.min.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/vendor/__packed.js') }}></script>
+        <!--<script type='text/javascript' src={{ asset('js/vendor/SmoothScroll.min.js') }}></script>-->
+        <script type='text/javascript' src={{ asset('public/js/vendor/hover/jquery.hoverdir.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/vendor/hover/hoverIntent.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/custom/shortcodes_init.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/custom/_utils.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/custom/_front.js') }}></script>
+        <script type='text/javascript' src={{ asset('public/js/custom/__main.js') }}></script>
+
+        <!--<script type='text/javascript' src='custom_tools/js/_customizer.js'></script>-->
+
+
+{% endblock %}
