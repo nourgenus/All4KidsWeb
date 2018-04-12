@@ -1,0 +1,260 @@
+{% block stylesheets%}
+<!-- Include Js Time Down Counter -->
+<script type="text/javascript" src="{{ asset('template/timeDownCounter.js') }}"></script>
+
+{% endblock %}
+{% extends '::base_parent.html.twig' %}
+{% block fos_user_content %}
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="index.html">Home</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <a class="all" href="#">Tous les evenements</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <span class="current"></span>
+            </div>
+            <h3 class="pageTitle h3"></h3>
+        </div>
+    </div>
+    <div class="mainWrap with_sidebar sideBarRight">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+                        <div class="masonryWrap">
+                            <div class="isotopeFiltr">
+                                <ul>
+                                    <li class="squareButton active">
+                                        <a href="#" data-filter="*">All</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_71">Party</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_66">Education</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_61">Sport</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_64">Autre..</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <section class="masonry isotope inited" data-columns="3" style="position: relative; height: 3823.94px;">
+                                {% for var in eve %}
+                                    {% if var.categorie == "Party" %}
+                                <article class="isotopeElement post_format_standard odd flt_71 isotopeElementShow" style="opacity: 1; width: 384px; position: absolute; left: 0px; top: 0px;">
+                                    <div class="isotopePadding">
+                                        <div class="thumb hoverIncrease inited" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg')}}" data-image="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" data-title="Summer Childcare Questions">
+                                            <img alt="Summer Childcare Questions" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}">
+                                            <span class="hoverShadow"></span><a href="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                        <h4>
+                                            <a href="{{ path('_consulter', { 'id': var.id }) }}">{{ var.nom }}</a>
+                                        </h4>
+                                        <p style="text-align: justify">{{ var.description|slice(0, 150) }} ...</p>
+                                        <div class="masonryInfo">
+                                            Posted
+                                            <a href="#" class="post_date">{{ var.datedeb|date('Y-m-d') }}</a>
+                                        </div>
+                                        <div class="masonryMore inited">
+                                            <ul>
+                                                <li class="squareButton light ico">
+                                                    <a class="icon-eye" title="Views - 142" href="#">{{ var.nbvue }}</a>
+                                                </li>
+                                                <li class="squareButton light ico likeButton like" data-postid="954" data-likes="2" data-title-like="Like" data-title-dislike="Dislike">
+                                                    <a class="icon-heart-1" title="Like - 2" href="#">
+                                                        <span class="likePost">{{ var.nblikes }}</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <span class="inlineShadow"></span>
+                                    </div>
+                                </article>
+                                {% endif %}
+
+                                    {% if var.categorie == "Education" %}
+                                        <article class="isotopeElement post_format_standard odd flt_66 isotopeElementShow" style="opacity: 1; width: 384px; position: absolute; left: 0px; top: 0px;">
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg')}}" data-image="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}">
+                                                    <span class="hoverShadow"></span><a href="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                                <h4>
+                                                    <a href="{{ path('_consulter', { 'id': var.id }) }}">{{ var.nom }}</a>
+                                                </h4>
+                                                <p style="text-align: justify">{{ var.description|slice(0, 150) }} ...</p>
+                                                <div class="masonryInfo">
+                                                    Posted
+                                                    <a href="#" class="post_date">{{ var.datedeb|date('Y-m-d') }}</a>
+                                                </div>
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <a class="icon-eye" title="Views - 142" href="#">{{ var.nbvue }}</a>
+                                                        </li>
+                                                        <li class="squareButton light ico likeButton like" data-postid="954" data-likes="2" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-heart-1" title="Like - 2" href="#">
+                                                                <span class="likePost">{{ var.nblikes }}</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+
+                                    {% if var.categorie == "Sport" %}
+                                        <article class="isotopeElement post_format_standard odd flt_61 isotopeElementShow" style="opacity: 1; width: 384px; position: absolute; left: 0px; top: 0px;">
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg')}}" data-image="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}">
+                                                    <span class="hoverShadow"></span><a href="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                                <h4>
+                                                    <a href="{{ path('_consulter', { 'id': var.id }) }}">{{ var.nom }}</a>
+                                                </h4>
+                                                <p style="text-align: justify">{{ var.description|slice(0, 150) }} ...</p>
+                                                <div class="masonryInfo">
+                                                    Posted
+                                                    <a href="#" class="post_date">{{ var.datedeb|date('Y-m-d') }}</a>
+                                                </div>
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <a class="icon-eye" title="Views - 142" href="#">{{ var.nbvue }}</a>
+                                                        </li>
+                                                        <li class="squareButton light ico likeButton like" data-postid="954" data-likes="2" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-heart-1" title="Like - 2" href="#">
+                                                                <span class="likePost">{{ var.nblikes }}</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+
+                                    {% if var.categorie == "Autre" %}
+                                        <article class="isotopeElement post_format_standard odd flt_64 isotopeElementShow" style="opacity: 1; width: 384px; position: absolute; left: 0px; top: 0px;">
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg')}}" data-image="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}">
+                                                    <span class="hoverShadow"></span><a href="{{ asset('images/event/'~var.nom~'_'~var.id~'.jpg') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                                <h4>
+                                                    <a href="{{ path('_consulter', { 'id': var.id }) }}">{{ var.nom }}</a>
+                                                </h4>
+                                                <p style="text-align: justify">{{ var.description|slice(0, 150) }} ...</p>
+                                                <div class="masonryInfo">
+                                                    Posted
+                                                    <a href="#" class="post_date">{{ var.datedeb|date('Y-m-d') }}</a>
+                                                </div>
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <a class="icon-eye" title="Views - 142" href="#">{{ var.nbvue }}</a>
+                                                        </li>
+                                                        <li class="squareButton light ico likeButton like" data-postid="954" data-likes="2" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-heart-1" title="Like - 2" href="#">
+                                                                <span class="likePost">{{ var.nblikes }}</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+
+
+
+
+                                {% endfor %}
+
+
+
+
+             </section>
+                            <div class="pagination">
+                                {{ knp_pagination_render(eve) }}
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </section>
+
+            </div>
+
+            <div id="sidebar_main" class="widget_area sidebar_main sidebar">
+
+
+
+                <aside class="widgetWrap hrShadow widget widget_popular_posts" >
+                    <h3 class="title">Populaire</h3>
+                    <div class="popular_and_commented_tabs tabs_area inited ui-tabs ui-widget ui-widget-content ui-corner-all">
+                        <ul class="tabs ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+                        </ul>
+                        <div class="tab_content ui-tabs-panel ui-widget-content ui-corner-bottom" id="widget_popular_10" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block;">
+                           {% for var2 in pop %}
+                            <article class="post_item no_thumb first">
+                                <h5 class="post_title">
+                                    <a href="{{ path('_consulter', { 'id': var2.id }) }}">{{ var2.nom }}</a>
+                                </h5>
+                                <div class="post_info">
+                                    <span class="post_date">{{ var2.datedeb|date('Y-m-d') }}</span>
+                                    <span class="post_comments">
+												<a href="#">
+													<span class="comments_icon icon-eye"></span>
+													<span class="post_comments_number">{{ var2.nbvue }}</span>
+												</a>
+											</span>
+                                </div>
+                            </article>
+            {% endfor %}
+
+                        </div>
+                      </div>
+                </aside>
+                <aside class="widgetWrap widget widget_recent_posts">
+                    <h3 class="title">Événements récents</h3>
+                    {% for var3 in rec %}
+                    <article class="post_item with_thumb first">
+                        <div class="post_thumb" style="height: 75px;width: 75px">
+                            <img alt="How to Teach Children to Think for Themselves" src="{{ asset('images/event/'~var3.nom~'_'~var3.id~'.jpg')}}">
+                        </div>
+                        <h5 class="post_title">
+                            <a href="{{ path('_consulter', { 'id': var3.id }) }}">{{ var3.nom }}</a>
+                        </h5>
+                        <div class="post_info">
+                            <span class="post_date">{{ var3.datedeb|date('Y-m-d') }}</span>
+                            <span class="post_author">
+										by
+										<a href="#">{{ app.user }}</a>
+									</span>
+                            <span class="post_comments">
+										<a href="#">
+											<span class="comments_icon icon-eye"></span>
+											<span class="post_comments_number"></span>
+										</a>
+									</span>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </aside>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+

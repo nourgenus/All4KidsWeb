@@ -1,0 +1,270 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12" id="alrt" hidden>
+            <div class="alert alert-success">
+                <strong>Success!</strong> le Babysitter à été ajouté.
+            </div>
+            </div>
+            <div class="col-md-6">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Ajouter babysitter</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form method="post" onsubmit="return verif()">
+                        <div class="box-body">
+                            <div class="form-group has-feedback" id="divemail">
+                                <label for="exampleInputEmail1" required>Email</label>
+                                <div>
+                                <input type="text" class="form-control" placeholder="e-mail" name="email" id="email" >
+                                </div>
+                                <div id="alrtemail" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> email invalide exemple(email@domain.com).</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divusername">
+                                <label for="exampleInputPassword1">Username</label>
+                                <input type="text" class="form-control" placeholder="user name" name="username" id="username" >
+                                <div id="alrtusername" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer un username</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divpassword">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="password" id="password" >
+                                <div id="alrtpassword" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer un mot de passe</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divnom">
+                                <label for="exampleInputPassword1">First name</label>
+                                <input type="text" class="form-control" placeholder="first name" name="nom" id="nom" >
+                                <div id="alrtnom" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer votre nom</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divprenom">
+                                <label for="exampleInputPassword1">Last name</label>
+                                <input type="text" class="form-control" placeholder="last name" name="prenom" id="prenom" >
+                                <div id="alrtprenom" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer votre prenom</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divdn">
+                                <label for="exampleInputPassword1">Birth date</label>
+                                <input type="date" class="form-control" id="" placeholder="Birth date" name="dn" id="dn" max="2000-12-31" min="1968-01-01" required>
+                            </div>
+                            <div class="form-group" id="divcin">
+                                <label for="exampleInputPassword1">C.I.N</label>
+                                <input type="text" class="form-control" placeholder="C.I.N" name="cin" id="cin" data-inputmask='"mask": "99999999"' data-mask >
+                                <div id="alrtcin" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer votre carte d'identité nationale exemple(07123456)</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group" id="divtel">
+                                <label for="exampleInputPassword1">Phone</label>
+                                <input type="text" class="form-control" placeholder="Phone number" name="tel" id="tel" data-inputmask='"mask": "99-999-999"' data-mask >
+                                <div id="alrttel" hidden>
+                                    <small><p style="color: #E35050"><strong>Erreur!</strong> entrer votre numero de téléphone exemple(99 123 456)</p></small>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <select class="form-control" name="adresse" id="adresse">
+                                    <option value="Ariana">Ariana</option>
+                                    <option value="Ben arous">Ben arous</option>
+                                    <option value="Bizerte">Bizerte</option>
+                                    <option value="Béja">Béja</option>
+                                    <option value="Gabès">Gabès</option>
+                                    <option value="Gafsa">Gafsa</option>
+                                    <option value="Jendouba">Jendouba</option>
+                                    <option value="Kairouan">Kairouan</option>
+                                    <option value="Kasserine">Kasserine</option>
+                                    <option value="kébili">kébili</option>
+                                    <option value="La manouba">La manouba</option>
+                                    <option value="Le kef">Le kef</option>
+                                    <option value="Mahdia">Mahdia</option>
+                                    <option value="Monastir">Monastir</option>
+                                    <option value="Médenine">Médenine</option>
+                                    <option value="Nabeul">Nabeul</option>
+                                    <option value="Sfax">Sfax</option>
+                                    <option value="Sidi bouzid">Sidi bouzid</option>
+                                    <option value="Siliana">Siliana</option>
+                                    <option value="Sousse">Sousse</option>
+                                    <option value="Tataouine">Tataouine</option>
+                                    <option value="Tozeur">Tozeur</option>
+                                    <option value="Tunis">Tunis</option>
+                                    <option value="Zaghouan">Zaghouan</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Salary: </label>
+                                <div class="slidecontainer">
+                                    <input type="range" min="50" max="300" value="100" class="slider" id="myRange" name="salaire">
+                                </div>
+                                <center><span id="demo" style="color: #4CAF50; font-size:30px;"></span></center>
+                            </div>
+
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer">
+                            <div class="col-xs-12">
+                                <button type="submit" class="btn btn-primary btn-block btn-flat">Confirm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block script %}
+    <script src="{{ asset('template/plugins/iCheck/icheck.min.js') }}"></script>
+    <script src="{{ asset('template/plugins/input-mask/jquery.inputmask.js') }}"></script>
+    <script src="{{ asset('template/plugins/input-mask/jquery.inputmask.date.extensions.js') }}"></script>
+    <script src="{{ asset('template/plugins/input-mask/jquery.inputmask.extensions.js') }}"></script>
+    <style>
+        .slidecontainer {
+            width: 100%;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #349fd1;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value+" DT";
+
+        slider.oninput = function() {
+            output.innerHTML = this.value+" DT";
+        }
+    </script>
+    <script>
+        $(function () {
+            $("[data-mask]").inputmask();
+        });
+    </script>
+    <script>
+        if ({{ success==1 }}){
+            $("#alrt").show().delay(3000).fadeOut();
+        }
+    </script>
+    <script>
+        function verif(){
+            var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+            var exp = new RegExp("^[a-zA-Z]*$","g");
+            var exp1 = new RegExp("^[a-zA-Z]*$","g");
+            var exp2 = new RegExp("^[a-zA-Z]*$","g");
+            if (reg.test(document.getElementById('email').value) == false)
+            {
+                document.getElementById('divemail').className = "form-group has-feedback has-error";
+                document.getElementById('email').focus();
+                $("#alrtemail").show();
+                return false;
+            }else {
+                document.getElementById('divemail').className = "form-group has-feedback";
+                $("#alrtemail").hide();
+            }
+
+            if ((exp.test(document.getElementById('username').value) == false)||(document.getElementById('username').value == ''))
+            {
+                document.getElementById('divusername').className = "form-group has-feedback has-error";
+                document.getElementById('username').focus();
+                $("#alrtusername").show();
+                return false;
+            }else {
+                document.getElementById('divusername').className = "form-group has-feedback";
+                $("#alrtusername").hide();
+            }
+            if (document.getElementById('password').value == '')
+            {
+                document.getElementById('divpassword').className = "form-group has-feedback has-error";
+                document.getElementById('password').focus();
+                $("#alrtpassword").show();
+                return false;
+            }else {
+                document.getElementById('divpassword').className = "form-group has-feedback";
+                $("#alrtpassword").hide();
+            }
+            if ((exp1.test(document.getElementById('nom').value) == false)||(document.getElementById('nom').value == ''))
+            {
+                document.getElementById('divnom').className = "form-group has-feedback has-error";
+                document.getElementById('nom').focus();
+                $("#alrtnom").show();
+                return false;
+            }else {
+                document.getElementById('divnom').className = "form-group has-feedback";
+                $("#alrtnom").hide();
+            }
+            if ((exp2.test(document.getElementById('prenom').value) == false)||(document.getElementById('prenom').value == ''))
+            {
+                document.getElementById('divprenom').className = "form-group has-feedback has-error";
+                document.getElementById('prenom').focus();
+                $("#alrtprenom").show();
+                return false;
+            }else {
+                document.getElementById('divprenom').className = "form-group has-feedback";
+                $("#alrtprenom").hide();
+            }
+            if ((document.getElementById('cin').value == '')||(isNaN(document.getElementById('cin').value))||(document.getElementById('cin').value.length <8)||(Number(document.getElementById('cin').value)>99999999))
+            {
+                document.getElementById('divcin').className = "form-group has-feedback has-error";
+                document.getElementById('cin').focus();
+                $("#alrtcin").show();
+                return false;
+            }else {
+                document.getElementById('divcin').className = "form-group has-feedback";
+                $("#alrtcin").hide();
+            }
+            if ((document.getElementById('tel').value == '')||(isNaN(document.getElementById('tel').value))||(Number(document.getElementById('tel').value)<10000000)||(Number(document.getElementById('tel').value)>99999999))
+            {
+                document.getElementById('divtel').className = "form-group has-feedback has-error";
+                document.getElementById('tel').focus();
+                $("#alrttel").show();
+                return false;
+            }else {
+                document.getElementById('divtel').className = "form-group has-feedback";
+                $("#alrttel").hide();
+            }
+            return true;
+
+        }
+
+    </script>
+{% endblock %}

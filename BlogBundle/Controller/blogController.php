@@ -3,9 +3,12 @@
 namespace BlogBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Cours;
 use AppBundle\Entity\Garderie;
+use BlogBundle\Entity\Quiz;
 use BlogBundle\Entity\test;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class blogController extends Controller
 {
@@ -39,16 +42,6 @@ class blogController extends Controller
         return $this->render('BlogBundle:Blog:afficherblogtrier.html.twig', array('articles'=>$a));
     }
 
-    public function afficherquizsAction()
-    {
-
-        return $this->render('BlogBundle:Blog:quiz.html.twig', array());
-    }
-    public function afficherquiz1Action()
-    {
-
-        return $this->render('BlogBundle:Blog:quiz1.html.twig', array());
-    }
     public function affichergarderieAction()
     {
         $em = $this->getDoctrine()->getManager();
@@ -57,5 +50,50 @@ class blogController extends Controller
 
     }
 
+    public function affichergarderie1Action(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $garderie = $em->getRepository(Garderie::class)->find($id);
+
+        return $this->render('BlogBundle:Blog:affichergarderie1.html.twig', array('garderies' => $garderie));
+    }
+
+
+
+
+
+
+    public function affichercourAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $cour = $em->getRepository(Cours::class)->findAll();
+        return $this->render('BlogBundle:Blog:affichercour.html.twig', array('cours' => $cour));
+
+    }
+    public function afficherquizAction()
+    {
+
+        return $this->render('BlogBundle:Blog:quiz1.html.twig', array());
+    }
+    public function afficherquiz2Action()
+    {
+
+        return $this->render('BlogBundle:Blog:quiz2.html.twig', array());
+    }
+    public function afficherquiz3Action()
+    {
+
+        return $this->render('BlogBundle:Blog:quiz3.html.twig', array());
+    }
+    public function scorequizAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $quiz = $em->getRepository(Quiz::class)->find($id);
+        $quiz->setNbr($quiz->getNbr()+1);
+        $em->flush();
+
+        var_dump($id);
+        return $this->render('BlogBundle:Blog:scorequiz.html.twig', array());
+    }
 
 }

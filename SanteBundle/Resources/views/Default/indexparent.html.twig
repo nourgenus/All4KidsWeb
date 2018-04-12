@@ -1,0 +1,49 @@
+{% extends 'base_parent.html.twig' %}
+
+{% block fos_user_content %}
+
+     <section class="beige_section">
+        <div class="container container_style_2 ">
+            <div class="sc_section bg_tint_light">
+                <div class="sc_content main ">
+                    <div class="columnsWrap  sc_columns sc_columns_count_4 aligncenter">
+                        <div class="columns1_4  sc_column_item sc_column_item_1 odd first">
+                            <div class="sc_title_icon  sc_title_top sc_size_huge">
+                                <img src="{{ asset('user/images/v.png')}}" alt=""/>
+                            </div>
+                            <h5 class="sc_title sc_title_iconed font-ubuntu style_2">Vaccines Injectees</h5>
+                            <div class="">
+                                <a href="{{  path('enfantparent',{'id':app.user.id}) }}">Plus</a>
+
+                            </div>
+                        </div>
+                        <div class="columns1_4 sc_column_item sc_column_item_2 even">
+                            <div class="sc_title_icon sc_title_top sc_size_huge">
+                                <img src="{{ asset('user/images/c.png')}}" alt=""/>
+                            </div>
+                            <h5 class="sc_title sc_title_iconed font-ubuntu style_2">Prochaine Vaccines</h5>
+                            <div class="">
+                                <a href="{{path('prochaine',{'id':app.user.id}) }}">Plus</a>
+                            </div>
+                        </div>
+                        <div class="columns1_4 sc_column_item sc_column_item_3 odd">
+                            <div class="sc_title_icon sc_title_top sc_size_huge">
+                                <img src="{{ asset('user/images/p.png')}}" alt=""/>
+                            </div>
+                            <h5 class="sc_title sc_title_iconed font-ubuntu style_2">Pharmacies</h5>
+                            <div class="">
+                                <a href="{{ path('parentpharmacie') }}">Plus</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

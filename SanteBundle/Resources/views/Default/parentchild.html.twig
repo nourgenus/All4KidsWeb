@@ -1,0 +1,71 @@
+{% extends 'base_parent.html.twig' %}
+
+{% block fos_user_content %}
+
+<style type="text/css">
+    .aa{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+
+            <h3 class="pageTitle h3">Upcoming Vaccin</h3>
+        </div>
+    </div>
+<div class="aa">
+    <div class="sc_tabs sc_tabs_style_2 height_style_2 margin_top_none " data-active="0">
+        <ul class="sc_tabs_style_1">
+            <li class="tab_names first">
+                <a href="#sc_tabs_1_1"  class="theme_button" id="sc_tabs_1_1_tab"> Makrem</a>
+            </li>
+
+        </ul>
+        <div id="sc_tabs_1_1"  class="sc_tabs_content odd first">
+            <div id="sc_tabs_1_1_scroll" class="sc_scroll sc_scroll_vertical">
+
+                <div class="sc_scroll_wrapper swiper-wrapper">
+
+
+                    <div class="sc_scroll_slide swiper-slide">
+                        {% for mod in mods %}
+                        <div class="sc_blogger sc_blogger_item style_date">
+                            <article class="sc_blogger_item">
+                                <div class="sc_blogger_date">
+                                    <span class="day_month">{{ mod.nom}}</span>
+                                    <span class="year">{{ mod.prenom}}</span>
+                                </div>
+                                <h4 class="sc_blogger_title sc_title">
+                                    <a href="{{ path('journale',{'id':mod.id}) }}">Journal Vaccines</a>
+                                </h4>
+                                <div class="sc_blogger_info">
+                                    by
+                                    <a href="#" class="post_author">John Doe</a>
+                                    <span class="separator">|</span>
+                                    Views
+                                    <span class="comments_number">339</span>
+                                </div>
+
+                            </article>
+
+
+                        </div>
+
+                        <div class="sc_line sc_line_style_solid margin_top_mini">
+
+                        </div>
+{% endfor %}
+
+                    </div>
+                </div>
+                <div id="sc_tabs_1_1_scroll_bar" class="sc_scroll_bar sc_scroll_bar_vertical sc_tabs_1_1_scroll_bar"> </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

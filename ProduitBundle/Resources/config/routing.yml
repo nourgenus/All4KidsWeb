@@ -1,3 +1,42 @@
 produit_homepage:
     path:     /
     defaults: { _controller: ProduitBundle:Default:index }
+afficherproduit:
+    path:     /afficher
+    defaults: { _controller: ProduitBundle:produit:afficher }
+ajouterproduit:
+    path:     /ajouter
+    defaults: { _controller: ProduitBundle:produit:ajouterproduit }
+afficherproduitseul:
+    path:     /produit/{id}/
+    defaults: { _controller: ProduitBundle:produit:afficherseul }
+editproduitseul:
+    path:     /editmonproduit/{id}/
+    defaults: { _controller: ProduitBundle:produit:editerseul }
+trieproduitprix:
+        path:     /trieprix
+        defaults: { _controller: ProduitBundle:produit:trieproduitprix }
+mesproduits:
+        path:     /mesproduits
+        defaults: { _controller: ProduitBundle:produit:mesproduits }
+updateproduct:
+        path:     /update
+        defaults: { _controller: ProduitBundle:produit:updateproduit }
+statproduct:
+        path:     /stat
+        defaults: { _controller: ProduitBundle:produit:statproduit }
+supprimerproduit:
+        path:     /supprimer/{id}/
+        defaults: { _controller: ProduitBundle:produit:supprimerproduit }
+afficherproduitback:
+        path:     /afficherproduitback
+        defaults: { _controller: ProduitBundle:produit:afficherproduitback }
+supprimerproduitback:
+        path:     /supprimerproduitback/{id}/
+        defaults: { _controller: ProduitBundle:produit:supprimerproduitback }
+ajouterfavoris:
+        path:     /ajouterfavoris/{id}/
+        defaults: { _controller: ProduitBundle:produit:ajouterfavoris }
+supprimerfavoris:
+        path:     /supprimerfavoris/{id}/
+        defaults: { _controller: ProduitBundle:produit:supprimerfavoris }

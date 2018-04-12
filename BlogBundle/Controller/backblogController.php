@@ -3,7 +3,10 @@
 namespace BlogBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Cours;
 use AppBundle\Entity\Garderie;
+use BlogBundle\Entity\Quiz;
+use Ob\HighchartsBundle\Highcharts\Highchart;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -81,7 +84,7 @@ class backblogController extends Controller
         return $this->render('BlogBundle:backblog:modifierarticle.html.twig',array("articles"=>$article));
     }
 
-   /* public function DashboardAction()
+   public function DashboardAction()
     {
         $number= array('');
         $quizs= array('');
@@ -120,11 +123,11 @@ class backblogController extends Controller
         $ob->series($sellsHistory);
 
 
-        return $this->render('BlogBundle:Blog:statquiz.html.twig', array(
+        return $this->render('BlogBundle:backblog:statquiz.html.twig', array(
             'barchart' => $ob
         ));
 
-    }*/
+    }
     public function affichergarderieAction()
     {
         $em=$this->getDoctrine()->getManager();
@@ -194,5 +197,35 @@ class backblogController extends Controller
         return $this->render('BlogBundle:backblog:modifiergarderie.html.twig',array("garderies"=>$garderie));
     }
 
+
+    public function ajoutercourAction(Request $request)
+    {
+        $cour=new Cours();
+        if($request->isMethod('POST'))
+        {
+            $em=$this->getDoctrine()->getManager();
+            $cour->setTitre($request->get('titre'));
+
+            $cour->setClasse($request->get('classe'));
+            $cour->setCategorie($request->get('categorie'));
+
+
+            $em->persist($cour);
+            $em->flush();
+
+
+            $file = $request->files->get('pdf');
+            var_dump($file);
+            $file->move(
+                $this->getParameter('pdf_directory'),
+                $cour->getTitre()."_".$cour->getId().".pdf"
+            );
+
+
+        }
+        return $this->render('BlogBundle:backblog:ajoutercour.html.twig', array(
+            "cours"=>$cour
+        ));
+    }
 
 }

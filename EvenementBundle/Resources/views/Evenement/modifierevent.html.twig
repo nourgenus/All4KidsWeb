@@ -1,0 +1,73 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+
+
+                        <form role="form" method="post">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">nom:</label>
+
+                                    <input type="text" name="nom" class="form-control" id="" value="{{ events.nom }}" placeholder="{{ events.nom }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">desciption:</label>
+
+                                    <input type="text" name="description" class="form-control" id="" value="{{ events.description }}" placeholder="{{ events.description }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">adresse:</label>
+
+                                    <input type="text" name="adresse"  class="form-control" id="" value="{{ events.adresse }}" placeholder="{{ events.adresse }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Prix:</label>
+
+                                    <input type="text" name="prix"  class="form-control" id="" value="{{ events.prix }}" placeholder="{{ events.prix }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">date debut:</label>
+
+                                    <input type="datetime-local" name="datedeb"  class="form-control" id="" value="{{ events.datedeb|date('j/m/y:H:i') }}" placeholder="{{ events.datedeb|date('j/m/y:H:i') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">date fin:</label>
+
+                                    <input type="datetime-local" name="datefin"  class="form-control" id="" value="{{ events.datefin|date('j/m/y:H:i') }}" placeholder="{{ events.datefin|date('j/m/y:H:i:s') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">organisateur:</label>
+
+                                    <input type="text" name="organisateur"  class="form-control" id="" value="{{ events.organisateur }}" placeholder="{{ events.organisateur }}">
+                                </div>
+
+
+
+                            </div>
+
+
+
+                            <!-- /.box-body -->
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Modifier</button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+{% endblock %}

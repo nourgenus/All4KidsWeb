@@ -38,4 +38,31 @@ supprimergarderie:
 modifiergarderie:
     path:     /modifiergarderie/{id}/
     defaults: { _controller: BlogBundle:backblog:modifiergarderie }
+CalculMontant:
+    path:     /CalculMontant/{id}/
+    defaults: { _controller: BlogBundle:blog:CalculMontant }
+affichergarderie1:
+    path:     /affichergarderie1/{id}/
+    defaults: { _controller: BlogBundle:blog:affichergarderie1 }
+ajoutercour:
+    path:     /ajoutercour
+    defaults: { _controller: BlogBundle:backblog:ajoutercour }
+affichercour:
+    path:     /affichercour
+    defaults: { _controller: BlogBundle:blog:affichercour }
+afficherquiz:
+    path:     /afficherquiz
+    defaults: { _controller: BlogBundle:blog:afficherquiz }
+afficherquiz2:
+    path:     /afficherquiz2
+    defaults: { _controller: BlogBundle:blog:afficherquiz2 }
+afficherquiz3:
+    path:     /afficherquiz3
+    defaults: { _controller: BlogBundle:blog:afficherquiz3 }
+scorequiz:
+    path:     /scorequiz/{id}
+    defaults: { _controller: BlogBundle:blog:scorequiz }
+stat:
+    path:     /stat
+    defaults: { _controller: BlogBundle:backblog:Dashboard }
 

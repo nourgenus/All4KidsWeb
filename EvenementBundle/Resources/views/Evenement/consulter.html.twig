@@ -1,0 +1,359 @@
+
+{% block stylesheets%}
+    <!-- Include Js Time Down Counter -->
+    <script type="text/javascript" src="{{ asset('template/timeDownCounter.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/rating.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('template/rating.css') }}"></script>
+
+
+
+{% endblock %}
+{% extends '::base_parent.html.twig' %}
+
+{% block fos_user_content  %}
+
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="index.html">Home</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <a class="all" href="#">Tous les evenements</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <span class="current"></span>
+            </div>
+            <h3 class="pageTitle h3"></h3>
+        </div>
+    </div>
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="post post_format_standard postAlter hrShadow no_padding">
+                    <div class="container">
+                        <article class="post_content">
+                            <div class="post_info infoPost">
+                                Posted <a href="#" class="post_date date updated">{{ event.datedeb|date('y-m-d') }}</a>
+                                <span class="separator">|</span>
+                                by
+                                <span class="vcard">
+											<a href="#" class="post_author fn" rel="author">{{ app.user }}</a>
+										</span><br>
+                                <span class="separator">{{  facebookButton() }}</span>
+
+                            </div>
+                            <div class="sc_section columns1_2 post_thumb thumb" style="width: 500px;height: 350px">
+                                <img alt="When Your Child Needs Glasses" src="{{ asset('images/event/'~event.nom~'_'~event.id~'.jpg') }}">
+                    </div>
+                            <h1 class="post_title entry-title">{{ event.nom }}</h1>
+                            <div class="post_text_area" style="text-align: justify">
+                                <p>{{ event.description }}</p>
+                                <div id="time-down-counter" class="time-down-counter text-center mr-20" style="background: #c0c0c0;display: inline-block;padding: 15px;font-size: 45px;line-height: 30px;color: #fff;border-radius: 7px;margin:0.1px"><br><br>
+
+                                </div>
+                                {% set debd = "now"|date("d")   %}
+                                {% set find =event.datedeb|date('d')  %}
+                                {% set debm = "now"|date("m")   %}
+                                {% set finm =event.datedeb|date('m')  %}
+                                {% set debmi = "now"|date("i")   %}
+                                {% set finmi =event.datedeb|date('i')  %}
+                                {% set debms = "now"|date("s")   %}
+                                {% set finms =event.datedeb |date('s')  %}
+                                {% set day =find-debd  %}
+                                {% set mon =finm-debm  %}
+                                {% set min =finmi-debmi  %}
+                                {% set ms =finms-debms  %}
+
+                                <script>
+
+                                    // Get Current date and add one month (To keep example work when you see it)
+                                    var daynamicDate = new Date();
+                                    daynamicDate.setMonth(daynamicDate.getMonth()+{{ mon }});
+                                    daynamicDate.setHours(daynamicDate.getHours()+{{ day }}*24);
+                                    daynamicDate.setMinutes(daynamicDate.getMinutes()+{{ min }})
+                                    daynamicDate.setSeconds(daynamicDate.getSeconds()+{{ ms }})
+
+
+
+
+
+                                    // Demo 3 - Run Counter With option
+                                    timeDownCounter({
+                                        'countDownDate': daynamicDate.getTime(), // Direct Use like: new Date("Sep 5, 2018 15:37:25").getTime();
+                                        'addSpanForResult': true,// Set class for each time group (nest days, hours, minutes, second in spans) its usfall for styling groub
+                                        'addSpanForEachNum': true,// Set Class and span for each number (its usfall for sperate counter style
+                                        'getTemplateResult': 0
+                                    }).startCountDown();
+                                </script>
+                                <div class="tagsWrap">
+                                    <div class="postSharing inited">
+                                        <ul>  {% if event.nbpart!=0 %}
+
+
+                                            {% if part is empty %}
+                                            <li class="squareButton light ico ico">
+                                                <a class="icon-calendar-o"  href="{{ path('_participer', {'id': event.id}) }}">Participer {{ event.nbpart }}</a>
+
+                                                {% endif %}
+                                                {% endif %}
+                                                {% if event.nbpart==0 %}
+                                            <li class="squareButton light ico">
+                                                <a class="icon-info" title="Views - 226" href="#">Toute les places sont prises</a>
+                                            </li>
+
+
+                                                {% endif %}
+
+
+
+
+                                            {% if part is not empty%}
+                                            <li class="squareButton light ico ico">
+                                                <a href="{{ asset('pdf/'~app.user~'-'~event.id~'.pdf') }}" download>Voucher</a>
+                                             </li>
+                                            {% endif %}
+
+                                            <li class="squareButton light ico">
+                                                <a class="icon-eye" title="Views - 226" href="#">{{ event.nbVue }}</a>
+                                            </li>
+                                            <li class="squareButton light ico">
+                                                <a class="icon-comment-1" title="Comments - 5" href="#">{{ comm }}</a>
+                                            </li>
+                                            {% set test = 0 %}
+
+                                            {% if l is not empty %}
+                                            {% for s in l %}
+
+                                                {% if s.idevenement==event %}
+                                                {% set test = 1 %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% endif %}
+
+                                            {% if test==0 %}
+                                                <li class="squareButton" data-postid="1031" data-likes="1" data-title-like="Like" data-title-dislike="Dislike">
+                                                    <a class="icon-thumbs-up-1" title="Like + 1" href="{{ path('_likes',{'id': event.id, 'ip': app.user.id}) }}">
+                                                        <span class="dislikePost">{{ event.nbLikes }}</span>
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                            {% if test==1 %}
+                                            <li class="squareButton" data-postid="1031" data-likes="1" data-title-like="Like" data-title-dislike="Dislike">
+                                                <a class="icon-thumbs-down" title="Like - 1" href="{{ path('_dislike', {'id': event.id, 'ip': app.user.id}) }}">
+                                                    <span class="dislikePost">{{ event.nbLikes }}</span>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section class="no_padding author vcard hrShadow">
+                    <div class="container">
+                        <h2 class="post_author_title">
+                            A propos
+                        </h2>
+                        <div class="tribe-events-single-section tribe-events-event-meta primary tribe-clearfix" style="border: 1px solid #eee;background: #fafafa">
+                            <div class="tribe-events-meta-group tribe-events-meta-group-details">
+                                <h3 class="tribe-events-single-section-title"> Détails </h3>
+                                <dl>
+                                    <dt style="font-weight: bold;"> début:</dt>
+                                    <dd>
+                                        <abbr class="tribe-events-abbr updated published dtstart" title="2015-05-29"> {{ event.dateDeb|date('F')}} {{event.datedeb|date('d')  ~" @ " }} {{ event.dateDeb|date('h:m A')}} </abbr>
+                                    </dd>
+                                    <dt style="font-weight: bold;"> fin: </dt>
+                                    <dd>
+                                        <abbr class="tribe-events-abbr dtend" title="2015-05-30">{{ event.datefin|date('F')}} {{event.datefin|date('d')  ~" @ " }} {{ event.datefin|date('h:m A')}}</abbr>
+                                    </dd>
+                                    <dt style="font-weight: bold;">Catégorie d'événement:</dt>
+                                    <dd class="tribe-events-event-categories">
+                                        <a href="#" rel="tag">{{ event.categorie }}</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="tribe-events-meta-group tribe-events-meta-group-organizer">
+                                <h3 class="tribe-events-single-section-title"> Organisateur
+                                </h3>
+                                <dl>
+                                    <dt style="font-weight: bold;">Nom :</dt>
+                                    <dd class="fn org"> {{ event.organisateur }}</dd>
+                                    <dt style="font-weight: bold;"> Email: </dt>
+                                    <dd class="email">
+                                        <a href="mailto:info@example.net">{{ event.email }}</a>
+                                    </dd>
+                                    <dt style="font-weight: bold;"> Website: </dt>
+                                    <dd class="url">
+                                        <a href="http://www.example.com" target="self">{{ event.website }}</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                    </div><br>
+                </section>
+                <section class="no_padding author vcard hrShadow">
+                        <div class="container" >
+                            <h2 class="post_author_title">
+                                Commentaires
+
+                            </h2>
+                            {% if co is empty %}
+                                <div class="sc_infobox sc_infobox_style_info sc_infobox_closeable"> <strong>Message d'information.</strong>Aucun commentaire saisie</div>
+
+                            {% endif %}
+                            {% for c in co %}
+                            <div class="avatar">
+                                <a href="#">
+                                    <img alt="" src="{{ asset('images/parent/'~c.idParents.id~'.jpg') }}" class="avatar avatar-50 photo" height="50" width="50">
+                                </a>
+                            </div><br>
+                            <div class="authorInfo">
+                                <p> {{ c.commentaire }} </p>
+                            </div>
+
+                        </div>
+
+                    <br>
+                            {% endfor %}
+                    <form method="post" action="{{ path('_commentaire', {'id': event.id, 'ip': app.user.id}) }}">
+                    <textarea id="contact_form_message" class="textAreaSize inited" name="message" style="overflow: hidden; word-wrap: break-word; resize: none; height: 64px; width: 1150px"></textarea>
+                        <div class="squareButton sc_button_size sc_button_style_global global ico">
+
+                            <button type="submit" name="contact_submit" class="contact_form_submit icon-comment-1">Envoyer un commentaire</button>
+                        </div>
+                    </form>
+
+
+
+                </section>
+                <br><br>
+                <section class="no_padding relatedWrap hrShadow">
+                    <div class="container">
+                        <h2>Événements liés</h2>
+
+
+                        </div>
+
+
+                        <div class="relatedPostWrap">
+                            <div class="columnsWrap">
+                                {% if lie is empty %}
+                                    <div class="sc_infobox sc_infobox_style_info sc_infobox_closeable"> <strong>Message d'information.</strong>Aucun commentaire saisie</div>
+                                {% endif %}
+                                {% for var2 in lie %}
+                                    {% if var2.id!=event.id %}
+                                {% if var2.categorie==event.categorie %}
+
+                                <article class="columns1_3 column_item_1">
+                                    <div class="thumb hoverIncrease inited" data-image="images/2000x1537.png" data-title="Physical Activity Keeps Kids Healthy">
+                                        <img alt="Physical Activity Keeps Kids Healthy" src="{{ asset('images/event/'~var2.nom~'.jpg') }}" id="eventimg">
+                                        <span class="hoverShadow"></span><a href="images/2000x1537.png" title="Physical Activity Keeps Kids Healthy" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                    <h4>
+                                        <a href="#">{{ var2.nom }}</a>
+                                    </h4>
+                                    <p style="text-align: justify">{{ var2.description|slice(0, 250) }} ....</p>
+                                    <div class="relatedInfo">
+                                        posté <a href="#" class="post_date">{{ var2.datedeb|date('y-m-d') }}</a>
+                                    </div>
+                                    <div class="relatedMore">
+                                        <ul>
+                                            <li class="squareButton light ico">
+                                                <a class="icon-link" title="More" href="#">Consulter</a>
+                                            </li>
+                                            <li class="squareButton light ico">
+                                                <a class="icon-eye" title="Comments - 0" href="#">{{ var2.nbVue}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </article>
+                                    {% endif %}
+                                {% endif %}
+                                {% endfor %}
+
+
+                            </div>
+                        </div>
+
+                </section>
+            <h2>Avis</h2>
+                {% if avis is empty %}
+                {% set verif=1 %}
+                {% endif %}
+                {% if avis is not empty %}
+ 
+                {% for x in avis %}
+                    {% if x.parentId==app.user %}
+                        {% set verif =0 %}
+                        <div class="sc_infobox sc_infobox_style_info sc_infobox_closeable"> <strong>Message d'information.</strong> vous avez déja voté pour cette evenement</div>
+                    {% else %}
+                        {% set verif = 1 %}
+                    {% endif %}
+                {% endfor %}
+                {% endif %}
+
+                {% if verif==1 %}
+                <form method="post" action="{{ path('_rating', {'id': event.id, 'ip': app.user.id}) }}">
+                    <select name="rate" id="rate" style="background-color: #fafafa;border:#1bb4b9 1px solid;width: 300px;height: 30px;border-radius: 7px">
+                        <option value="1" selected="selected">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select><br><br>
+                    <input type="submit" value="Valider"/>
+                </form>
+                {% endif %}
+
+
+
+                <div class="reviewBlock sc_tabs inited ui-tabs ui-widget ui-widget-content ui-corner-all">
+
+                <div class="ratingStars ui-tabs-panel ui-widget-content ui-corner-bottom" id="author-tabs" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block;">
+                    {% for v in avis %}
+                    <div class="ratBody">
+                        {{ v.rating|rating }}
+                        <span class="name">L'utilisateur {{ v.parentId }} a donné son avis sur {{ event.nom }}</span>
+                    </div>
+                    {% endfor %}
+
+
+
+
+
+                    <div class="infoTotal">
+                        <div class="infoRat">Voici la note global de l'evenement selon les utilisateur ont voté ! Merci d'avoir consulter notre evenement</div>
+                        <div class="totalWrap">
+                            {{ total|rating }}
+                            <div class="totalRating" data-mark="96.8">{{ sum }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

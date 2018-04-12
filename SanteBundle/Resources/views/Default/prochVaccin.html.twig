@@ -1,0 +1,60 @@
+{% extends 'base_parent.html.twig' %}
+
+{% block fos_user_content %}
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+
+            <h3 class="pageTitle h3">Upcoming Vaccin</h3>
+        </div>
+    </div>
+<div id="tribe-events-content" class="tribe-events-list">
+    <h2 class="tribe-events-page-title">{{ app.user.username }}</h2>
+    <div class="tribe-events-loop vcalendar">
+        {% for en in enf %}
+
+        <span class='tribe-events-list-separator-month'>
+            <span>{{ en.nom }} {{ en.prenom }}--{{ en.dateNaissance|date('y/m/d')}}--{{ en.age}}Jours</span>
+        </span>
+
+            {% for en2 in vacc %}
+                {% for en1 in sat %}
+                {% if  en.id==en1.enfant.id and en2.id==en1.vaccin.id and en.age == en2.age*30-2 and en1.statut==0 %}
+
+            <div class="columnsWrap sc_columns sc_columns_count_3">
+                <div class="columns2_3 sc_column_item sc_column_item_1 odd first span_2">
+                    <div class="sc_title_icon sc_title_left sc_size_medium sc_title_bg sc_bg_square">
+                        <img src="{{ asset('user/images/v.jpg') }}">
+                    </div>
+                    <h4 class="sc_title sc_title_iconed">{{ en2.nom }}</h4>
+                    {{ en2.description }} <br>
+                    {{ en2.age }} Mois
+
+                </div>
+               <!-- <div class="columns1_3 sc_column_item sc_column_item_3 odd after_span_2">
+                    <div class="sc_button sc_button_style_light sc_button_size_huge squareButton fullSize light huge  ico">
+                        <a href="#popup_shortcode_2" class=" user-popup-link">Get shortcode</a>
+                    </div>
+                    <div id="popup_shortcode_2" class="sc_popup sc_popup_light mfp-with-anim mfp-hide">
+                        <h4>Shortcode &#8220;Title&#8221; with left icon</h4>
+                        <p>Shortcode text for example below:</p>
+                        <pre>&lt;div class="sc_title_icon sc_title_left sc_size_medium icon-diamond sc_title_bg sc_bg_square"&gt;&lt;/div&gt;</pre>
+                    </div>
+                </div>-->
+            </div>
+            <div class="sc_line sc_line_style_solid margin_top_small"></div>
+
+                    {% endif %}
+                {% endfor %}
+        {% endfor %}
+        {% endfor %}
+    </div></div>
+
+
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

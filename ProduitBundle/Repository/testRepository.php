@@ -10,4 +10,21 @@ namespace ProduitBundle\Repository;
  */
 class testRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function findStatData()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select p.categorie,count(p.categorie) from AppBundle:Produit p GROUP BY p.categorie");
+        //très important! parameterS
+        return $query->getResult();
+    }
+    public function findTotalProds()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select count(p) from AppBundle:Produit p");
+        //très important! parameterS
+        return $query->getResult();
+    }
+
+
 }

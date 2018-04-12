@@ -1,0 +1,141 @@
+{% extends '::base_parent.html.twig' %}
+{% block fos_user_content %}
+<div id="topOfPage" class="topTabsWrap">
+    <div class="main">
+        <div class="speedBar">
+            <a class="home" href="{{ asset('dashboard_parent') }}">Accueil</a>
+            <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+            <span class="current">Mes réservations</span>
+        </div>
+        <h3 class="pageTitle h3">Mes réservations</h3>
+    </div>
+</div>
+
+
+
+
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+                        <div class="" style="text-align: center;">
+                            <ul>
+                                <li class="squareButton">
+                                    <a href="{{ path('parent_babysitter_list') }}">Tous les babysitters</a>
+                                </li>
+                                <li class="squareButton">
+                                    <a href="{{ path('babysitter_near_to_parent',{'id': app.user.id }) }}" data-filter=".flt_71">Près de moi</a>
+                                </li>
+                                <li class="squareButton">
+                                    <a href="{{ path('conversations') }}" data-filter=".flt_66">Mes messages
+                                        {% set countUnread = count_unread_conversations(app.user) %}
+
+                                        {% if countUnread > 0 %}
+                                            <strong>({{ countUnread }} new)</strong>
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                <li class="squareButton">
+                                    <a href="{{ path('reserver_babysitter') }}" data-filter=".flt_66">Réserver</a>
+                                </li>
+                                <li class="squareButton active">
+                                    <a href="{{ path('parent_reservations',{'id': app.user.id }) }}" data-filter=".flt_66">Mes réservations</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <section class="masonry isotope" data-columns="0">
+                            <article class="isotopeElement isotopeElementShow" style="opacity: 1; width: 100%; position: center;">
+                                <div class="isotopePadding">
+                                    {% if plannifications|length > 0 %}
+                                    <div class="sc_table sc_table_style_1 sc_table_size_big">
+                                        <table>
+                                        <tr>
+                                            <td>
+                                                Babysitter
+                                            </td>
+                                            <td>
+                                                Date de réservation
+                                            </td>
+                                            <td>
+                                                Confirmation de réservation
+                                            </td>
+                                            <td>
+                                                Contacter le babysitter
+                                            </td>
+                                        </tr>
+                                        {% for plannification in plannifications %}
+                                                {% if plannification.status == 1 %}
+                                                    <tr style="background-color: lightgreen">
+                                                        <td>
+                                                            <a href="{{ path('parent_babysitter_selectionne',{'id':plannification.babysitter.id}) }}">{{ plannification.babysitter.nom }}&nbsp;{{ plannification.babysitter.prenom }}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{ plannification.date|date('d-m-Y') }}
+                                                        </td>
+                                                        <td>
+                                                            réservation confirmé de la part du babysitter.
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ path('form_start_message',{'id': plannification.babysitter.id }) }}" class="">Contacter</a>
+                                                        </td>
+                                                    </tr>
+                                                {% elseif plannification.status == 0 %}
+                                                    <tr style="background-color: lightgoldenrodyellow">
+                                                        <td>
+                                                            <a href="{{ path('parent_babysitter_selectionne',{'id':plannification.babysitter.id}) }}">{{ plannification.babysitter.nom }}&nbsp;{{ plannification.babysitter.prenom }}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{ plannification.date|date('d-m-Y') }}
+                                                        </td>
+                                                        <td>
+                                                            réservation en attente de confirmation.
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ path('form_start_message',{'id': plannification.babysitter.id, 'page': 1 }) }}" class="">Contacter</a>
+                                                        </td>
+                                                    </tr>
+                                                {% else %}
+                                                    <tr style="background-color: #fca1a1">
+                                                        <td>
+                                                            <a href="{{ path('parent_babysitter_selectionne',{'id':plannification.babysitter.id}) }}">{{ plannification.babysitter.nom }}&nbsp;{{ plannification.babysitter.prenom }}</a>
+                                                        </td>
+                                                        <td>
+                                                            {{ plannification.date|date('d-m-Y') }}
+                                                        </td>
+                                                        <td>
+                                                            réservation annulé de la part du babysitter.
+                                                        </td>
+                                                        <td>
+                                                            <a href="{{ path('form_start_message',{'id': plannification.babysitter.id, 'page': 1 }) }}" class="">Contacter</a>
+                                                        </td>
+                                                    </tr>
+                                                {% endif %}
+                                            {% endfor %}
+                                            <tr></tr>
+                                        </table>
+                                    </div>
+                                                {% else %}
+                                                    <h3>Vous n'avez aucune réservation pour le moment.</h3><br>
+                                                {% endif %}
+
+                                </div>
+                            </article>
+
+
+
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

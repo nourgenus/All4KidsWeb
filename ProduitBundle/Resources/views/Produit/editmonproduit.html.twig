@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <title>KidsCare HTML</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('user/images/favicon.ico')}}"/>
+    <!--[if lt IE 9]>
+    <script src="{{ asset('user/js/vendor/html5.js') }}" type="text/javascript"></script>
+    <![endif]-->
+    <link rel='stylesheet' href="{{ asset('user/css/woo/woocommerce-layout.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/woo/woocommerce-smallscreen.css') }}" type='text/css' media='only screen and (max-width: 768px)'/>
+    <link rel='stylesheet' href="{{ asset('user/css/woo/woocommerce.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/__packed.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/fontello/css/fontello.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/fontello/css/animation.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/style.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/woo/woo-style.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/shortcodes.css') }}" type='text/css' media='all'/>
+    <link id="theme-skin-css" rel='stylesheet' href="{{ asset('user/css/kidscare.css') }}" type='text/css' media='all'/>
+    <style id='theme-skin-inline-css' type='text/css'></style>
+    <link rel='stylesheet' href="{{ asset('user/css/responsive.css') }}" type='text/css' media='all'/>
+
+    <!--<link rel='stylesheet' href="{{ asset('user/custom_tools/css/customizer.css') }}" type='text/css' media='all'/>-->
+
+
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/the-events-calendar/vendor/bootstrap-datepicker/css/datepicker.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/the-events-calendar/resources/tribe-events-full.min.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/the-events-calendar/resources/tribe-events-theme.min.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/the-events-calendar/resources/tribe-events-full-mobile.min.css') }}" type='text/css' media='only screen and (max-width: 768px)'/>
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/the-events-calendar/resources/tribe-events-theme-mobile.min.css') }}" type='text/css' media='only screen and (max-width: 768px)'/>
+    <link rel='stylesheet' href="{{ asset('user/js/vendor/revslider/rs-plugin/css/settings.css') }}" type='text/css' media='all'/>
+    <link rel='stylesheet' href="{{ asset('user/css/tribe-style.css') }}" type='text/css'>
+
+</head>
+
+<body class="single single-product themerex_body boxed top_panel_above theme_skin_kidscare bg_pattern_9 woocommerce">
+
+
+<div class="main_content">
+    <div class="boxedWrap">
+
+        <header class="noFixMenu menu_right without_user_menu">
+            <div class="topWrapFixed"></div>
+            <div class="topWrap">
+                <div class="mainmenu_area">
+                    <div class="main with_logo_left">
+                        <div class="logo logo_left">
+                            <a href="{{ asset('index.html') }}">
+                                <img src="{{ asset('images/152x34.png') }}" class="logo_main" alt="">
+                                <img src="{{ asset('images/152x34.png') }}" class="logo_fixed" alt="">
+                                <span class="logo_slogan"></span>
+                            </a>
+                        </div>
+                        <div class="search" title="Open/close search form">
+                            <div class="searchForm">
+                                <form method="get" class="search-form" action="#">
+                                    <button type="submit" class="searchSubmit" title="Start search">
+                                        <span class="icoSearch"></span>
+                                    </button>
+                                    <input type="text" class="searchField" placeholder="Search &hellip;" value="" name="s" title="Search for:"/>
+                                </form>
+                            </div>
+                            <div class="ajaxSearchResults"></div>
+                        </div>
+                        <a href="#" class="openResponsiveMenu">Menu</a>
+                        <nav role="navigation" class="menuTopWrap topMenuStyleLine">
+                            <ul id="mainmenu" class="">
+
+
+                                <li class="menu-item menu-item-has-children columns custom_view_item">
+
+                                    <span class="menu_icon icon-params"> </span>
+                                    Etre Parent
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="headers-standard.html">Standard</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="headers-transparent.html">Transparent</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="headers-central-menu.html">Central menu</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="headers-video.html">Video header</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a title="Layouts and hovers" href="{{ path('afficherproduit') }}">
+                                        <span class="menu_icon icon-thumbs-up"></span>
+                                        Produit
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="{{ path('afficherproduit') }}">Tout les produits</a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="#">Mes produits</a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="{{ path('ajouterproduit') }}">Ajouter un produit</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a title="Posts pages" href="#">
+                                        <span class="menu_icon icon-note"></span>
+                                        Loisirs
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="#">Pédiatre</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Guide d'alimentation</a>
+
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Forum</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Tutoriels</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item menu-item-has-children">
+                                    <a title="Posts pages" href="#">
+                                        <span class="menu_icon icon-note"></span>
+                                        Sante
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="#">Pédiatre</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Guide d'alimentation</a>
+
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Forum</a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Tutoriels</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="menu-item menu-item-has-children">
+                                    <a title="Posts pages" href="#">
+                                        <span class="menu_icon icon-note"></span>
+                                        Babysitters
+                                    </a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <a href="#">Babysitters Near you </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="#">Search for a Babysitter </a>
+                                        </li>
+                                        <li class="menu-item">
+                                            <a href="blog-timeline.html">Full list</a>
+                                        </li>
+                                        <li class="menu-item menu-item-has-children">
+                                            <a href="blog-tabs.html">My Subscriptions</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item">
+                                                    <a href="">My Payments</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="">My Notifcations (0)</a>
+                                                </li>
+                                                <li class="menu-item">
+                                                    <a href="">Send Message to My Babysitter</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="topOfPage" class="topTabsWrap">
+            <div class="main">
+                <div class="speedBar">
+                    <a class="home" href="{{ path('produit_homepage') }}">Acceuil</a>
+                    <span class="breadcrumbs_delimiter">
+                            <i class="icon-right-open-mini"></i>
+                        </span>
+                    <a class="all" href="{{ path('afficherproduit') }}">Tout les produits</a>
+                    <span class="breadcrumbs_delimiter">
+                            <i class="icon-right-open-mini"></i>
+                        </span>
+                    <span class="current">{{ produits.nom }}</span>
+                </div>
+                <h3 class="pageTitle h3">{{ produits.nom }}</h3>
+            </div>
+        </div>
+
+        <div class="mainWrap with_sidebar sideBarRight">
+            <div class="main">
+                <div class="content">
+                    <div class="post shop_mode_thumbs">
+                        <article class="post_content">
+                            <nav class="woocommerce-breadcrumb">
+                                <a href="#">Home</a>
+                                &nbsp;/&nbsp;
+                                <a href="#">Action Figures</a>
+                                &nbsp;/&nbsp;
+                                <a href="#">Robotic Toys</a>
+                                &nbsp;/&nbsp;
+                                {{ produits.Nom() }}
+                            </nav>
+                            <div class="product">
+                                <div class="images">
+                                    <a href="{{ asset('images/produits/'~produits.id~'_'~produits.parent.id~'.png') }}" class="p-view prettyPhoto" title="The Zoomer Robot Dog Toy 1" data-gal="prettyPhoto[gal]">
+                                        <img src="{{ asset('images/produits/'~produits.id~'_'~produits.parent.id~'.png') }}" class="attachment-shop_single wp-post-image" alt="The Zoomer Robot Dog Toy   1" title="The Zoomer Robot Dog Toy   1">
+                                    </a>
+
+
+                                </div>
+                                <form class="cart" method="post" action="{{ path("updateproduct") }}" enctype="multipart/form-data">
+
+                                    <div class="summary entry-summary">
+                                        <h1 class="product_title entry-title">{{ produits.Nom() }}</h1>
+                                        <div>
+                                            <p class="price">
+                                                <input type="text" name="Prix" class="search-field" placeholder="Set new price …" value="{{ produits.Prix() }}" title="Search for products:">
+
+                                            </p>
+                                        </div>
+                                        <input name="idProd" hidden value="{{ produits.id }}">
+
+                                        <div class="margin_top_mini margin_bottom_mini">
+                                            <input type="text" name="NomProduit" class="search-field" placeholder="Search for products …" value="{{ produits.nom }}" title="Search for products:">
+
+
+                                            <br>
+                                            <input type="text" name="Description" class="search-field" placeholder="Search for products …" value="{{ produits.description }}" title="Search for products:">
+                                        </div>
+                                        {% if app.user %}
+                                            {% if app.user.id != produits.Parent().id %}
+                                                <form class="cart" method="post" enctype="multipart/form-data">
+                                                    <button name="echange" type="submit" class="single_add_to_cart_button button alt">Echange</button>
+                                                </form>
+                                            {% endif %}
+                                        {% endif %}
+
+                                        <div class="product_meta">
+	                                        <span class="posted_in">
+	                                            Categories:
+                                                <select name="categs">
+                                            {% for cat in categs %}
+                                                <option  value="{{ cat.getTitre()  }}">
+
+                                                    {{ cat.getTitre() }}
+                                                </option>
+                                            {% endfor %}
+
+                                        </select>
+                                                <input name="submit" type="submit" id="submit" class="submit" value="Submit">
+
+	                                        </span>
+
+                                            <span class="product_id">
+	                                            Product ID:
+	                                            <span>{{ produits.id }}</span>
+                                        </span>
+
+                                        </div>
+                                </form>
+                            </div>
+                            <div class="woocommerce-tabs sc_tabs">
+                                <ul class="tabs" role="tablist" id="tabs_sliders">
+                                    <li class="description_tab">
+                                        <div class="fb-like" data-href="http://localhost:8888/projetpi1/web/app_dev.php/produit/{{ produits.id }}" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="false"></div>
+                                    </li>
+                                    <li class="reviews_tab">
+                                        <div class="fb-share-button" data-href="http://localhost:8888/projetpi1/web/app_dev.php/produit/{{ produits.id }}" data-layout="button" data-size="large" data-mobile-iframe="true"></div>
+                                    </li>
+                                    <li>
+                                        <div class="fb-comments" data-href="http://localhost:8888/projetpi1/web/app_dev.php/produit/{{ produits.id }}" data-numposts="3"></div>
+                                    </li>
+
+                                </ul>
+
+                                <div class="panel entry-content" id="tab1">
+                                    <h2>Product Description</h2>
+                                    <p>
+                                        <strong>{{ produits.description }}</strong>
+                                    </p>
+                                    <p>
+                                        <strong>Product Dimensions:</strong> 11.3 x 2.8 x 11.3 inches ; 1.8 pounds<br>
+                                        <strong>Shipping Weight</strong>: 1.8 pounds (View shipping rates and policies)<br>
+                                        <strong>Shipping</strong>: This item is also available for shipping to select countries outside the U.S.<br>
+                                        <strong>Origin</strong>: Imported (Denmark)<br>
+                                        <strong>Manufacturer recommended age</strong>: 4 years and up
+                                    </p>
+                                    <ul>
+                                        <li>Endless building fun</li>
+                                        <li>Colorful LEGO bricks</li>
+                                        <li>Includes bricks in white, orange, red, blue, yellow, brown, black, dark green, and light green</li>
+                                        <li>650 pieces</li>
+                                    </ul>
+                                </div>
+
+                                <div class="panel entry-content" id="tab2">
+                                    <div id="reviews">
+                                        <div id="comments">
+                                            <h2>Reviews</h2>
+                                            <p class="woocommerce-noreviews">There are no reviews yet.</p>
+                                        </div>
+                                        <div id="review_form_wrapper">
+                                            <div id="review_form">
+                                                <div id="respond" class="comment-respond">
+                                                    <h3 id="reply-title" class="comment-reply-title">
+                                                        Be the first to review “Zoomer Robot Dog”
+                                                    </h3>
+                                                    <form action="#" method="post" id="commentform" class="comment-form">
+                                                        <p class="comment-form-author">
+                                                            <label for="author">Name
+                                                                <span class="required">*</span>
+                                                            </label>
+                                                            <input id="author" name="author" type="text" value="" size="30" aria-required="true">
+                                                        </p>
+                                                        <p class="comment-form-email">
+                                                            <label for="email">Email
+                                                                <span class="required">*</span>
+                                                            </label>
+                                                            <input id="email" name="email" type="text" value="" size="30" aria-required="true">
+                                                        </p>
+                                                        <p class="comment-form-rating">
+                                                            <label>Your Rating</label>
+                                                        <p class="stars">
+	                                                                    <span>
+	                                                                        <a class="star-1" href="#">1</a>
+	                                                                        <a class="star-2" href="#">2</a>
+	                                                                        <a class="star-3" href="#">3</a>
+	                                                                        <a class="star-4" href="#">4</a>
+	                                                                        <a class="star-5" href="#">5</a>
+	                                                                    </span>
+                                                        </p>
+                                                        </p>
+
+                                                        <p class="form-submit">
+                                                            <input name="submit" type="submit" id="submit" class="submit" value="Submit">
+                                                        </p>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                    </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="sidebar_main" class="widget_area sidebar_main sidebar">
+                <aside class="widgetWrap hrShadow widget woocommerce widget_product_categories">
+                    <h3 class="title">Product Categories</h3>
+                    <ul class="product-categories">
+                        <li class="cat-item">
+                            <a href="#">Vetements</a>
+                            <span class="count">(3)</span>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Meubles</a>
+                            <span class="count">(1)</span>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Accesoires</a>
+                            <span class="count">(3)</span>
+                        </li>
+                        <li class="cat-item">
+                            <a href="#">Autre ...</a>
+                            <span class="count">(4)</span>
+                        </li>
+
+                    </ul>
+                </aside>
+                <aside class="widgetWrap hrShadow widget woocommerce widget_product_search">
+                    <h3 class="title">Search Products</h3>
+                    <form method="get" class="search-form" action="#">
+                        <input type="text" class="search-field" placeholder="Search for products …" value="" name="s" title="Search for products:">
+                        <span class="search-button squareButton light ico">
+                                    <a class="search-field icon-search" href="#"></a>
+                                </span>
+                        <input type="hidden" name="post_type" value="product">
+                    </form>
+                </aside>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="footerContentWrap">
+
+        <footer class="footerWrap footerStyleLight">
+            <div class="main footerWidget widget_area">
+                <div class="columnsWrap">
+                    <aside class="columns1_4 widgetWrap widget widget_advert">
+                        <div class="widget_advert_inner">
+                            <figure class="sc_image  sc_image_shape_square">
+                                <img src="{{ asset('user/images/165x55.png')}}" alt="">
+                            </figure>
+                            <br>
+                            <div class="sc_video_player">
+                                <div class="sc_video_frame sc_video_play_button" data-video="&lt;iframe class=&quot;video_frame&quot; src=&quot;https://youtube.com/embed/636Dp8eHWnM?autoplay=1&quot; width=&quot;100%&quot; height=&quot;141&quot; frameborder=&quot;0&quot; webkitAllowFullScreen=&quot;webkitAllowFullScreen&quot; mozallowfullscreen=&quot;mozallowfullscreen&quot; allowFullScreen=&quot;allowFullScreen&quot;&gt;&lt;/iframe&gt;">
+                                    <img alt="" src="{{ asset('user/images/211x141.png')}}">
+                                </div>
+                            </div>
+                            <br>
+                            <span class="sc_icon icon-home theme_accent2"></span>
+                            378 Main Street London<br>
+                            <span class="sc_icon icon-email theme_accent2"></span>
+                            info@example.com<br>
+                            <span class="sc_icon icon-phone theme_accent2"></span>
+                            +1 (44) 123-45-67
+                        </div>
+                    </aside>
+
+                    <aside class="columns1_4 widgetWrap widget woocommerce widget_products">
+                        <h3 class="title">Latest Products</h3>
+                        <ul class="product_list_widget">
+                            <li>
+                                <a href="#" title="Count Sidewalk Chalk">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="Crayola 64 Ct Crayons 1"/>
+                                    <span class="product-title">Count Sidewalk Chalk</span>
+                                </a>
+                                <span class="amount">&pound;9.99</span>
+                            </li>
+                            <li>
+                                <a href="#" title="LeapFrog Learn to Write">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="LeapFrog Learn to Write 1"/>
+                                    <span class="product-title">LeapFrog Learn to Write</span>
+                                </a>
+                                <span class="amount">&pound;25.00</span>
+                            </li>
+                            <li>
+                                <a href="#" title="Washable Fingerpaints">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="Washable Fingerpaints Primary 1"/>
+                                    <span class="product-title">Washable Fingerpaints</span>
+                                </a>
+                                <span class="amount">&pound;12.50</span>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <aside class="columns1_4 widgetWrap widget woocommerce widget_top_rated_products">
+                        <h3 class="title">Top Rated Products</h3>
+                        <ul class="product_list_widget">
+                            <li>
+                                <a href="#" title="Count Sidewalk Chalk">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="Crayola 64 Ct Crayons 1"/>
+                                    <span class="product-title">Count Sidewalk Chalk</span>
+                                </a>
+                                <span class="amount">&pound;9.99</span>
+                            </li>
+                            <li>
+                                <a href="#" title="LeapFrog Learn to Write">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="LeapFrog Learn to Write 1"/>
+                                    <span class="product-title">LeapFrog Learn to Write</span>
+                                </a>
+                                <span class="amount">&pound;25.00</span>
+                            </li>
+                            <li>
+                                <a href="#" title="Washable Fingerpaints">
+                                    <img src="{{ asset('user/images/90x90.png')}}" class="attachment-shop_thumbnail" alt="Washable Fingerpaints Primary 1"/>
+                                    <span class="product-title">Washable Fingerpaints</span>
+                                </a>
+                                <span class="amount">&pound;12.50</span>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <aside class="columns1_4 widgetWrap widget widget_twitter">
+                        <h3 class="title">Twitter</h3>
+                        <ul>
+                            <li class="theme_text">
+                                <a href="https://twitter.com/axiomthemes" class="username" target="_blank">@axiomthemes</a> Be the first to learn about our #new #project #blog #handmade
+                                <a href="http://axiomthemes.com/coming-soon-handmade-mariana-blog/" target="_blank">axiomthemes.com/coming-soon-ha…</a>
+                            </li>
+                            <li class="theme_text last">
+                                <a href="https://twitter.com/axiomthemes" class="username" target="_blank">@axiomthemes</a> Our new #food #drink #WordPress theme! Follow the link to get more info <a href="http://axiomthemes.com/food-drink-an-innovative-restaurant-wordpress-theme/" target="_blank">axiomthemes.com/food-drink-an-…</a>
+                            </li>
+                        </ul>
+                    </aside>
+
+                </div>
+            </div>
+        </footer>
+
+        <div class="upToScrollWrapper">
+            <div class="upToScroll">
+                <a href="#" class="scrollToTop" title="Back to top">
+                </a>
+            </div>
+        </div>
+        <div class="copyWrap">
+            <div class="copy main">
+                <div class="copyright">
+                    <a href="http://themeforest.net/user/axiomthemes/portfolio">Axiom</a> &copy; 2015 All Rights Reserved
+                    <a href="#">Terms of Use</a>
+                    and <a href="#">Privacy Policy</a>
+                </div>
+                <div class="copy_socials socPage">
+                    <ul>
+                        <li>
+                            <a class="social_icons social_facebook facebook_image" target="_blank" href="http://facebook.com">
+                                <span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social_icons social_pinterest pinterest_image" target="_blank" href="http://pinterest.com">
+                                <span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social_icons social_twitter twitter_image" target="_blank" href="http://twitter.com">
+                                <span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social_icons social_gplus gplus_image" target="_blank" href="http://gplus.com">
+                                <span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social_icons social_linkedin linkedin_image" target="_blank" href="http://linkedin.com">
+                                <span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="social_icons social_vimeo vimeo_image" target="_blank" href="http://vimeo.com">
+                                <span></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="upToScroll">
+    <a href="#" class="addBookmark icon-star-empty" title="Add the current page into bookmarks"> </a>
+    <a href="#" class="scrollToTop icon-up-open-big" title="Back to top"> </a>
+</div>
+
+<script type='text/javascript' src="{{ asset('user/js/vendor/jquery-1.11.3.min.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/vendor/jquery-migrate.min.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/vendor/jquery-ui.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/vendor/__packed.js')}}"></script>
+<!--<script type='text/javascript' src='js/vendor/SmoothScroll.min.js'></script>-->
+<script type='text/javascript' src="{{ asset('user/js/custom/shortcodes_init.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/custom/_utils.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/custom/_front.js')}}"></script>
+<script type='text/javascript' src="{{ asset('user/js/custom/__main.js')}}"></script>
+
+<!--<script type='text/javascript' src="{{ asset('user/custom_tools/js/_customizer.js')}}"></script>-->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=342511646243996';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12&appId=60297142322&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+</body>
+
+</html>

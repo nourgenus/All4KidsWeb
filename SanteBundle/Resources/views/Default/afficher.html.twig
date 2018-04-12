@@ -1,0 +1,66 @@
+{% extends 'base_admin.html.twig' %}
+{% block fos_user_content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List des pharmacies</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Type</th>
+                                    <th>adresse</th>
+                                </tr>
+                                </thead>
+    {% for mod in phars %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ mod.nom }}</td>
+                                        <td>{{ mod.type}}</td>
+                                        <td><a class="label label-info"href="{{ path('afficher')}}">cliquer pour visionner l'emplacement</a></td>
+                                        <td><a class="glyphicon glyphicon-remove" href="{{ path('delete',{'id':mod.id})}}"></a></td>
+                                        <td><a class=" glyphicon glyphicon-pencil " href="{{ path('update',{'id':mod.id})}}"></a></td>
+                                    </tr>
+
+                                    </tbody>
+{% endfor%}
+                            </table>
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                {{ knp_pagination_render(phars) }}
+                                <a href="{{ path('sante_homepage') }}" class="btn btn-block btn-primary btn-sm">Nouvelle Pharmacie</a>
+                            </div>
+
+                        </div>
+                        {% for flash_message in app.session.flashBag.get('success') %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h4><i class="icon fa fa-check"></i> Success </h4>
+                                {{ flash_message }}
+                            </div>
+                        {% endfor %}
+
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.box-body -->
+
+                    <!-- /.box-footer -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}

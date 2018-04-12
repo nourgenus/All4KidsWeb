@@ -1,0 +1,194 @@
+{% extends '::base_parent.html.twig' %}
+{% block fos_user_content %}
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="{{ asset('index.html') }}">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <a class="all" href="#">Alimentation</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <span class="current">Liste des articles alimentaire</span>
+            </div>
+            <h3 class="pageTitle h3">Liste des articles alimentaire</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap with_sidebar sideBarRight">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+                        <div class="masonryWrap">
+                            <div class="isotopeFiltr">
+                                <ul>
+                                    <li class="squareButton active">
+                                        <a href="#" data-filter="*">All</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_71">Populaire</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_66">Recette</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_61">Allaitement</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_64">Diversification alimentaire</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_65">holidays</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_68">bio</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <section class="masonry isotope inited" data-columns="2" style="position: relative; height: 3981.19px;">
+                                {% for parc in parcs %}
+
+                                    <article class="isotopeElement post_format_standard odd flt_71 flt_66 flt_61 isotopeElementShow" style="opacity: 1; width: 450px; position: absolute; left: 0px; top: 0px;">
+                                        <div class="isotopePadding">
+                                            <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
+                                                <img alt="Summer Childcare Questions" src="{{  asset('images/event/'~parc.nom~'_'~parc.id~'.png') }}">
+                                                <span class="hoverShadow"></span><a href="{{  asset('images/event/'~parc.nom~'_'~parc.id~'.png') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+
+                                            <p>cette article est{{ parc.decription }}</p>
+                                            <div class="masonryInfo">
+                                                le contenu est
+                                                <a href="#" class="post_date">{{ parc.adresse}} </a>
+                                            </div>
+
+                                            <span class="inlineShadow"></span>
+                                        </div>
+                                    </article>
+
+                                {% endfor %}
+                            </section>
+                        </div>
+
+                        <div id="pagination" class="pagination">
+                            <ul class="pageLibrary">
+                                <li class="pager_pages libPage">
+                                    Page
+                                    <input class="navInput" readonly="readonly" type="text" size="1" value="1"> of 2
+                                    <div id="pageNavSlider" class="boxShadow pageFocusBlock navPadding" style="">
+                                        <div class="sc_slider sc_slider_swiper sc_slider_controls sc_slider_controls_top sc_slider_nopagination sc_slider_noautoplay swiper-slider-container">
+                                            <ul class="slides swiper-wrapper" data-current-slide="1">
+                                                <li class="swiper-slide">
+                                                    <div class="pageNumber">
+                                                        <table>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#" class="active">1</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="#">2</a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="flex-direction-nav">
+                                            <li>
+                                                <a class="flex-prev" href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="flex-next" href="#">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="pager_next ico right squareButton light">
+                                    <a href="#">Next </a>
+                                </li>
+                                <li class="pager_last ico right squareButton light">
+                                    <a href="#">Last </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <div id="sidebar_main" class="widget_area sidebar_main sidebar">
+                <aside class="widgetWrap hrShadow widget widget_subcategories">
+                    <div class="widget_subcategories_inner">
+
+                    </div>
+                </aside>
+                <aside class="widgetWrap hrShadow widget widget_popular_posts">
+                    <div class="popular_and_commented_tabs tabs_area inited ui-tabs ui-widget ui-widget-content ui-corner-all">
+                        {#<div class="tab_content ui-tabs-panel ui-widget-content ui-corner-bottom" id="widget_popular_10" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false" style="display: block;">
+                            {% for at in articlesTri %}
+                                {% if at.type == "article" %}
+                                    <article class="post_item no_thumb first">
+                                        <h5 class="post_title">
+                                            <a href="#">{{ at.nom }}</a>
+                                        </h5>
+                                        <div class="post_info">
+                                            <span class="post_date">{{ at.autheur }}</span>
+                                            <span class="post_comments">
+                        <a href="#">
+                          <span class="comments_icon icon-eye"></span>
+                          <span class="post_comments_number">{{ at.vues }}</span>
+                        </a>
+                      </span>
+                                        </div>
+                                    </article>
+                                {% endif %}
+                            {% endfor %}
+                        </div>#}
+                    </div>
+                </aside>
+                {# <aside class="widgetWrap widget widget_recent_posts">
+                     <h3 class="title">Les mieux notés</h3>
+                     {% for an in articlesNote %}
+                         {% if an.type == "article" %}
+                             <article class="post_item with_thumb first">
+                                 <div class="post_thumb">
+                                     <img alt="How to Teach Children to Think for Themselves" src="{{ asset('images/'~an.image) }}">
+                                 </div>
+                                 <h5 class="post_title">
+                                     <a href="#">{{ an.nom }}</a>
+                                 </h5>
+                                 <div class="post_info">
+                             <span class="post_author">
+                     by
+                     <a href="#">{{ an.autheur }}</a>
+                   </span>
+                                     <span class="post_comments">
+                     <a href="#">
+                       <span class="comments_icon icon-eye"></span>
+                       <span class="post_comments_number">{{ an.vues }}</span>
+                     </a>
+                   </span>
+                                 </div>
+                             </article>
+                         {% endif %}
+                     {% endfor %}
+                 </aside>#}
+                <aside class="widgetWrap widget widget_recent_posts">
+
+                </aside>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

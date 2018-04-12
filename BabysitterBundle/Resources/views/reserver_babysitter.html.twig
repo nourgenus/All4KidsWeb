@@ -1,0 +1,113 @@
+{% extends '::base_parent.html.twig' %}
+{% block fos_user_content %}
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <span class="current">date souhaité pour la réservation</span>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <form method="post">
+                    <input type="date" name="datesouhaite" value="{{ d|date('Y-m-d') }}">
+                    <a class="all" href="#" onclick="document.getElementById('sub').click();">chercher</a>
+                    <button type="submit" id="sub" hidden></button>
+                </form>
+            </div>
+            <h3 class="pageTitle h3">Réserver babysitter</h3>
+        </div>
+    </div>
+
+
+
+
+    <div class="mainWrap with_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+                        <div class="masonryWrap">
+                            <div class="" style="text-align: center;">
+                                <ul>
+                                    <li class="squareButton">
+                                        <a href="{{ path('parent_babysitter_list') }}">Tous les babysitters</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="{{ path('babysitter_near_to_parent',{'id': app.user.id }) }}" data-filter=".flt_71">Près de moi</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="{{ path('conversations') }}" data-filter=".flt_66">Mes messages
+                                            {% set countUnread = count_unread_conversations(app.user) %}
+
+                                            {% if countUnread > 0 %}
+                                                <strong>({{ countUnread }} new)</strong>
+                                            {% endif %}
+                                        </a>
+                                    </li>
+                                    <li class="squareButton active">
+                                        <a href="{{ path('reserver_babysitter') }}" data-filter=".flt_66">Réserver</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="{{ path('parent_reservations',{'id': app.user.id }) }}" data-filter=".flt_66">Mes réservations</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <section class="masonry isotope inited" data-columns="4" style="position: relative; height: 3981.19px;">
+
+
+                                {% if babysitters|length > 0 %}
+                                    {% for babysitter in babysitters %}
+                                        <article class="isotopeElement post_format_standard odd flt_71 flt_66 flt_61 isotopeElementShow" style="opacity: 1; width: 450px; position: absolute; left: 0px; top: 0px;">
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" data-image="{{ asset('user/images/1317x2000.png') }}">
+                                                    {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png')) %}
+                                                        {% set imagePath = 'images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png' %}
+                                                    {% else %}
+                                                        {% set imagePath = 'images/babysitter/inconnu.png' %}
+                                                    {% endif %}
+                                                    <img src="{{ asset(imagePath) }}" style="width: 250px; height: 250px;">
+                                                    <span class="hoverShadow"></span><a href="{{ asset(imagePath) }}" ><span class="hoverIcon"></span></a>
+                                                </div>
+                                                <h4>
+                                                    {{ babysitter.nom }}&nbsp;{{ babysitter.prenom }}
+                                                </h4>
+                                                <div>
+                                                <p>
+                                                <small>date de naissance: {{ babysitter.dateNaissance|date('d-m-Y') }}</small><br>
+                                                <small>adresse: {{ babysitter.adresse }}</small><br>
+                                                <small>email:{{ babysitter.email }}</small><br>
+                                                    <small>téléphone: {{ babysitter.tel }}</small><br>
+                                                <small>salaire par jour: {{ babysitter.salaire }}DT</small><br>
+                                                </p>
+                                                <div class="sc_button sc_button_style_global sc_button_size_mini squareButton fullSize global mini  ico margin_bottom_mini" style="width: 90%"> <a href="{{ path('plannifier_babysitter',{'baby': babysitter.id ,'id': app.user.id,'date': d|date('Y-m-d') }) }}" class="">réserver</a> </div>
+                                                </div><br>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endfor %}
+                                {% endif %}
+
+                            </section>
+                            {% if babysitters|length <= 0 %}
+                                <section class="masonry isotope" data-columns="1">
+                                    <article class="isotopeElement isotopeElementShow" style="opacity: 1; width: 900px; position: absolute; left: 0px; top: 0px; ">
+                                        <div class="isotopePadding">
+                                            <h1>Désolé!</h1>
+                                            <h3>Aucune babysitter se trouve pour le moment,</h3><br>
+                                            <h3>essayez avec une autre date.</h3><br>
+                                        </div>
+                                    </article>
+                                </section>
+                            {% endif%}
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+
+{% endblock %}

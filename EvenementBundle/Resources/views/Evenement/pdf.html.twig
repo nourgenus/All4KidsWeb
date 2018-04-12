@@ -1,0 +1,116 @@
+<style>
+    html {
+        margin-top: 0in !important;
+        margin-left: 0in !important;
+    }
+
+    @page {
+        margin: 0px;
+    }
+
+    body {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 13px;
+        line-height: 1.4em;
+        margin: 0px;
+    }
+
+    .voucher {
+        width: 8in;
+        height: 3.77in;
+        position: relative;
+    }
+
+
+    .voucher-img {
+        max-width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .field-amount {
+        position: absolute;
+        top: 236px;
+        right: 353px;
+        color: #fff;
+        font-size: 57px;
+        line-height: 40px;
+        font-weight: 500;
+    }
+
+    .field-content {
+        position: absolute;
+        width: 40%;
+        right: 10px;
+        top: 48px;
+        text-align: center;
+    }
+
+    .demo-title {
+        font-size: 35px;
+        font-weight: 300;
+        line-height: 1;
+    }
+
+    .demo-p {
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+
+    .field-code {
+        padding: 15px;
+        border: 1px dotted;
+        margin: 35px 0 15px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .field-expiry {
+        padding: 8px 13px;
+        background: #eee;
+    }
+
+    .field-customer {
+        margin-top: 20px;
+    }
+</style>
+{% set randomPassword = [] %}
+{% set alpha = 'abcdefghijklsmnopqrtuvwxyz' %}
+{% set numbers = '0123456789' %}
+
+{% for i in 1..10 %}
+    {% set randomCharacter = random(alpha ~ alpha|upper ~ numbers ~ '-_') %}
+    {% set randomPassword = randomPassword|merge([randomCharacter]) %}
+{% endfor %}
+{% set randomPassword = randomPassword|join %}
+
+
+
+<div class="voucher">
+    <img class="voucher-img" src="C:\wamp\www\pidevv\web\images\event\voucher.jpg" />
+
+    <span class="field-amount"></span>
+
+    <div class="field-content">
+        <div class="demo-title">{{ name }}</div>
+        <div class="demo-p">Cette voucher est valable jusqu'a {{ datefin|date('y-m-d') }}</div>
+
+        <div class="field-code">{{ randomPassword }}</div>
+
+
+            <div class="field-expiry">{{ datedeb|date('y-m-d') }}</div>
+
+            <div class="field-customer">{{ nameparent }}</div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

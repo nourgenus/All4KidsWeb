@@ -1,0 +1,165 @@
+{% extends '::base_babysitter.html.twig' %}
+{% block fos_user_content %}
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="{{ asset('dashboard_babysitter') }}">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <span class="current">Mes messages</span>
+            </div>
+            <h3 class="pageTitle h3">Mes messages</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+
+
+                        <section class="masonry isotope" data-columns="0">
+                            <article class="isotopeElement isotopeElementShow" style="opacity: 1; width: 50%; position: center">
+                                <div class="isotopePadding">
+
+
+                                    <div id="sc_tabs_1_1" class="sc_tabs_content odd first">
+                                        <div id="sc_tabs_1_1_scroll" class="sc_scroll sc_scroll_vertical">
+                                            <div class="sc_scroll_wrapper swiper-wrapper">
+                                                <div class="sc_scroll_slide swiper-slide">
+                                                    {% if conversations|length > 0 %}
+                                                        {% for conversation in conversations %}
+                                                            {% set firstUnread = conversation.firstUnreadMessage(app.user) %}
+                                                            {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png')) %}
+                                                                {% set imagePath = 'images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png' %}
+                                                            {% else %}
+                                                                {% set imagePath = 'images/parents/inconnu.png' %}
+                                                            {% endif %}
+                                                            <figure class="sc_image  sc_image_align_left sc_image_shape_square margin_right_small">
+                                                                <img src="{{ asset(imagePath) }}" alt="" style="height: 100px;width: 100px;border-radius: 50%;"/>
+                                                            </figure>
+                                                            <h4 class="sc_title sc_title_regular">
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, conversation.messages.last)}) }}">
+                                                                    {{ members_list(conversation, app.user) }}
+                                                                </a>
+                                                            </h4>
+                                                            {% if firstUnread %}
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, firstUnread)}) }}">
+                                                                    {{ firstUnread.body }}
+                                                                    <small>{{ firstUnread.date|date('m/d/Y h:ia') }}</small>
+                                                                </a>
+                                                                <strong>(New)</strong>
+                                                            {% else %}
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, conversation.messages.last)}) }}">
+                                                                    {{ conversation.messages.last.body }}
+                                                                    <small>{{ conversation.messages.last.date|date('m/d/Y h:ia') }}</small>
+                                                                </a>
+                                                            {% endif %}
+                                                            <br><hr><br>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <p>
+                                                            You don't have any conversation.
+                                                            You will receive a notification when you receive a message.
+                                                        </p>
+                                                    {% endif %}
+
+                                                </div>
+                                            </div>
+                                            <div id="sc_tabs_1_1_scroll_bar" class="sc_scroll_bar sc_scroll_bar_vertical sc_tabs_1_1_scroll_bar"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                            <div class="sc_section sc_alignright columns1_2 margin_top_small">
+                                <div class="sc_infobox sc_infobox_style_regular">
+
+                                    <form method="post">
+                                        <h4>Conversation with: {{ members_list(conversation, app.user) }}</h4>
+
+                                        <p>{{ total }} message(s) in this conversation | Page {{ page }} / {{ totalPages }}</p>
+                                        <div>
+                                            {% if page > 1 %}
+                                                <p style="float: left;">
+                                                    <a href="{{ path('conversation_view', {'id': conversation.id, 'page': page - 1}) }}">
+                                                        < Previous
+                                                    </a>
+                                                </p>
+                                            {% endif %}
+
+                                            {% if page < totalPages %}
+                                                <p align="right">
+                                                    <a href="{{ path('conversation_view', {'id': conversation.id, 'page': page + 1}) }}">
+                                                        Next >
+                                                    </a>
+                                                </p>
+                                            {% endif %}
+                                        </div>
+                                        <br>
+
+                                        {% for message in  messages %}
+                                            {% if message.sender.username != app.user.username %}
+                                                <div class="sc_section sc_section_style_1">
+                                                    {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png')) %}
+                                                        {% set imagePath = 'images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png' %}
+                                                    {% else %}
+                                                        {% set imagePath = 'images/parents/inconnu.png' %}
+                                                    {% endif %}
+                                                    <p style="float: left;margin-right: 5px"><img src="{{ asset(imagePath) }}" style=" width: 30px;height: 30px;border-radius: 50%;" alt=""/></p>
+                                                    <p id="message-{{ message.id }}">
+                                                        <b>{{ message.body|nl2br }}</b><br />
+                                                        <small>{{ message.date|date('m/d/Y h:ia') }}</small>
+                                                    </p>
+                                                </div>
+                                            {% else %}
+                                                <div class="sc_section sc_section_style_1">
+                                                    {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/babysitter/'~app.user.username~'_'~app.user.id~'.png')) %}
+                                                        {% set imagePath = 'images/babysitter/'~app.user.username~'_'~app.user.id~'.png' %}
+                                                    {% else %}
+                                                        {% set imagePath = 'images/babysitter/inconnu.png' %}
+                                                    {% endif %}
+                                                    <p style="float: right; margin-left: 5px"><img src="{{ asset(imagePath) }}" style="width: 30px;height: 30px;border-radius: 50%;" alt=""/></p>
+                                                    <p id="message-{{ message.id }}" align="right">
+                                                        <b>{{ message.body|nl2br }}</b><br />
+                                                        <small>{{ message.date|date('m/d/Y h:ia') }}</small>
+                                                    </p>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                        <br>
+                                        <input type="text" name="body" style="width: 86%" autocomplete="off">
+                                        <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium" style="width: 13%">
+                                            <a href="javascript:;" onclick="document.getElementById('sub').click();">Send ></a>
+                                        </div>
+                                        <button type="submit" id="sub" hidden>Send</button>
+
+
+                                    </form>
+                                </div>
+                                <div class="sc_button sc_button_style_light sc_button_size_huge squareButton fullSize light huge  margin_top_small margin_bottom_mini">
+                                    <a href="#popup_shortcode_1" class="user-popup-link">Get shortcode</a>
+                                </div>
+                                <div id="popup_shortcode_1" class="sc_popup sc_popup_light mfp-with-anim mfp-hide">
+                                    <h4>Shortcode &#8220;Infobox&#8221; (style &#8220;regular&#8221;)</h4>
+                                    <p>Shortcode text for example below:</p>
+                                    <pre>&lt;div class="sc_infobox sc_infobox_style_regular"&gt; &lt;h4&gt;General Message.&lt;/h4&gt; &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, quisquam, eveniet fugit minima repellat inventore libero tempora dicta quo natus suscipit eius blanditiis incidunt ducimus necessitatibus voluptatem ipsum ut aliquam adipisci neque quis officia nemo consequuntur iusto cum.&lt;/p&gt; &lt;/div&gt;</pre>
+                                </div>
+                            </div>
+
+
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

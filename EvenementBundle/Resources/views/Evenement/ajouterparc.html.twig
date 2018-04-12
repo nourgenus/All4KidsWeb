@@ -1,0 +1,50 @@
+
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Créer un article</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form role="form" method="post" enctype="multipart/form-data">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Nom:</label>
+                                <input type="text" name="nom" class="form-control" id="" placeholder="nom du parc">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">adresse:</label>
+                                <input type="text" name="adresse" class="form-control" id="" placeholder="adresse du parc">
+                            </div>
+                            <div class="form-group">
+                                <label>description:</label>
+                                <textarea class="form-control" name="description" rows="3" placeholder=""></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Image:</label>
+                                <input type="file" name="imgparc" class="form-control" id="" >
+                            </div>
+
+
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+{% endblock %}

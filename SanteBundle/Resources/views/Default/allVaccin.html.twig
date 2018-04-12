@@ -1,0 +1,67 @@
+{% extends 'base_admin.html.twig' %}
+{% block fos_user_content %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List des Vaccins</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+
+                        <div class="table-responsive">
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Description</th>
+                                    <th>Age approprié</th>
+                                </tr>
+                                </thead>
+                                {% for mod in phars %}
+                                    <tbody>
+                                    <tr>
+                                        <td>{{ mod.nom}}</td>
+                                        <td>{{ mod.description}}</td>
+                                        <td>{{ mod.age}}</td>
+
+                                        <td><a class="glyphicon glyphicon-remove" href="{{ path('deletevin',{'id':mod.id})}}"></a></td>
+                                        <td><a class=" glyphicon glyphicon-pencil " href="{{ path('editvin',{'id':mod.id})}}"></a></td>
+                                    </tr>
+
+                                    </tbody>
+                                {% endfor%}
+                            </table>
+                            <div class="pagination pagination-sm no-margin pull-right">
+                                {{ knp_pagination_render(phars) }}
+                            </div>
+                        </div>
+                        <!-- /.table-responsive -->
+                        {% for flash_message in app.session.flashBag.get('success') %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h4><i class="icon fa fa-check"></i> Success </h4>
+                                {{ flash_message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer clearfix">
+
+                    </div>
+                    <!-- /.box-footer -->
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+{% endblock %}

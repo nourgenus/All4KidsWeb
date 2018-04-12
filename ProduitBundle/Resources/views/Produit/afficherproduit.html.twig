@@ -1,0 +1,338 @@
+{% extends 'base_parent.html.twig' %}
+{% block fos_user_content %}
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="#">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <a class="all" href="#">Produits</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <span class="current">Liste des produits</span>
+            </div>
+            <h3 class="pageTitle h3">Liste des produits</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+                        <div class="masonryWrap">
+                            <div class="isotopeFiltr">
+                                <ul>
+                                    <li class="squareButton active">
+                                        <a href="#" data-filter="*">tous les produits</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#"  data-filter=".flt_71">Vetements</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_66">Meubles</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_61">Accessoires</a>
+                                    </li>
+                                    <li class="squareButton">
+                                        <a href="#" data-filter=".flt_64">Autre..</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="columns1_4 sc_column_item sc_column_item_4 even">
+                                <ul>
+                                    <li class="squareButton light ico" style="margin-left: 300px;">
+                                        <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium">
+                                            {% if app.user %}
+                                                <a href="{{ path('mesproduits') }}" class="" style="margin-left: 800px;">Mes produits</a>
+
+                                                <a href="{{ path('ajouterproduit') }}" class="" style="margin-left: 800px;">Ajouter</a></br>
+                                            {% endif %}
+                                                <a href="{{ path('trieproduitprix') }}" class="" style="margin-left: 800px;">Prix</a>
+
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            </br>
+                            </br>
+                            </br>
+                            </br>
+
+
+
+                            <section id="genus" class="masonry isotope inited" data-columns="4" style="position: relative; height: 1441.92px;">
+                                {% for produit in produits %}
+                                    {% set ifavoris = 0 %}
+                                   {% for x in favoris %}
+                                       {% if x.produit.id==produit.id%}
+                                           {% set ifavoris = 1 %}
+                                       {% endif %}
+                                   {% endfor %}
+
+                                    {% if produit.categorie == "Vetement" %}
+                                        <article class="isotopeElement post_format_standard odd flt_71 isotopeElementShow" style="width: 300px; position: absolute; left: 0px; top: 0px; opacity: 1;">
+
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/produits/'~produit.id~'_'~produit.parent.id~'.png') }}" id="imgproduit">
+                                                </div>
+                                                <h4>
+
+                                                    <a href="#">{{ produit.nom }}</a>
+                                                    {% if app.user %}
+
+                                                        {% if ifavoris==0 %}
+                                                            <a href="{{ path('ajouterfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart"></span>
+                                                            </a>
+                                                        {% endif %}
+                                                        {% if ifavoris==1 %}
+                                                            <a href="{{ path('supprimerfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart-1"></span>
+                                                            </a>
+                                                        {% endif %}
+
+                                                    {% endif %}
+
+                                                </h4>
+                                                <p>{{ produit.description[:50] }} (...)</p>
+
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium">
+                                                                <a href="{{ path('afficherproduitseul',{'id':produit.id}) }}" class="">Consulter Produit</a>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="squareButton light ico likeButton like" data-postid="806" data-likes="0" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-money" title="Like - 0" >
+                                                                <span class="">{{ produit.prix }}</span>
+                                                            </a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                    {% if produit.categorie == "Meuble" %}
+                                        <article class="isotopeElement post_format_standard odd flt_66 isotopeElementShow" style="width: 300px; position: absolute; left: 0px; top: 0px; opacity: 1;">
+
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/produits/'~produit.id~'_'~produit.parent.id~'.png') }}" id="imgproduit">
+                                                </div>
+                                                <h4>
+
+                                                    <a href="#">{{ produit.nom }}</a>
+                                                    {% if app.user %}
+
+                                                        {% if favoris is empty %}
+                                                            <a href="{{ path('ajouterfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart"></span>
+                                                            </a>
+                                                        {% endif %}
+                                                        {% if favoris is not empty %}
+                                                            <a href="{{ path('supprimerfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart-1"></span>
+                                                            </a>
+                                                        {% endif %}
+
+                                                    {% endif %}
+
+                                                </h4>
+                                                <p>{{ produit.description[:50] }} (...)</p>
+
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium">
+                                                                <a href="{{ path('afficherproduitseul',{'id':produit.id}) }}" class="">Consulter Produit</a>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="squareButton light ico likeButton like" data-postid="806" data-likes="0" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-money" title="Like - 0" >
+                                                                <span class="">{{ produit.prix }}</span>
+                                                            </a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                    {% if produit.categorie == "Accessoire" %}
+                                        <article class="isotopeElement post_format_standard odd flt_61 isotopeElementShow" style="width: 300px; position: absolute; left: 0px; top: 0px; opacity: 1;">
+
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/produits/'~produit.id~'_'~produit.parent.id~'.png') }}" id="imgproduit">
+                                                </div>
+                                                <h4>
+
+                                                    <a href="#">{{ produit.nom }}</a>
+                                                    {% if app.user %}
+
+                                                        {% if favoris is empty %}
+                                                            <a href="{{ path('ajouterfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart"></span>
+                                                            </a>
+                                                        {% endif %}
+                                                        {% if favoris is not empty %}
+                                                            <a href="{{ path('supprimerfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart-1"></span>
+                                                            </a>
+                                                        {% endif %}
+
+                                                    {% endif %}
+
+                                                </h4>
+                                                <p>{{ produit.description[:50] }} (...)</p>
+
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium">
+                                                                <a href="{{ path('afficherproduitseul',{'id':produit.id}) }}" class="">Consulter Produit</a>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="squareButton light ico likeButton like" data-postid="806" data-likes="0" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-money" title="Like - 0" >
+                                                                <span class="">{{ produit.prix }}</span>
+                                                            </a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                    {% if produit.categorie == "Autre" %}
+                                        <article class="isotopeElement post_format_standard odd flt_64 isotopeElementShow" style="width: 300px; position: absolute; left: 0px; top: 0px; opacity: 1;">
+
+                                            <div class="isotopePadding">
+                                                <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
+                                                    <img alt="Summer Childcare Questions" src="{{ asset('images/produits/'~produit.id~'_'~produit.parent.id~'.png') }}" id="imgproduit">
+                                                </div>
+                                                <h4>
+
+                                                    <a href="#">{{ produit.nom }}</a>
+                                                    {% if app.user %}
+
+                                                        {% if favoris is empty %}
+                                                            <a href="{{ path('ajouterfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart"></span>
+                                                            </a>
+                                                        {% endif %}
+                                                        {% if favoris is not empty %}
+                                                            <a href="{{ path('supprimerfavoris',{'id':produit.id}) }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited">
+                                                                <span class="icon-heart-1"></span>
+                                                            </a>
+                                                        {% endif %}
+
+                                                    {% endif %}
+
+                                                </h4>
+                                                <p>{{ produit.description[:50] }} (...)</p>
+
+                                                <div class="masonryMore inited">
+                                                    <ul>
+                                                        <li class="squareButton light ico">
+                                                            <div class="sc_button sc_button_style_global sc_button_size_medium squareButton global medium">
+                                                                <a href="{{ path('afficherproduitseul',{'id':produit.id}) }}" class="">Consulter Produit</a>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="squareButton light ico likeButton like" data-postid="806" data-likes="0" data-title-like="Like" data-title-dislike="Dislike">
+                                                            <a class="icon-money" title="Like - 0" >
+                                                                <span class="">{{ produit.prix }}</span>
+                                                            </a>
+                                                        </li>
+
+
+                                                    </ul>
+                                                </div>
+                                                <span class="inlineShadow"></span>
+                                            </div>
+                                        </article>
+                                    {% endif %}
+                                {% endfor %}
+                            </section>
+
+
+                        </div>
+                        <div class="pagination">
+                            {{ knp_pagination_render(produits) }}
+                        </div>
+                       {# <div id="pagination" class="pagination">
+                            <ul class="pageLibrary">
+                                <li class="pager_pages libPage">
+                                    Page
+                                    <input class="navInput" readonly="readonly" type="text" size="1" value="1"> of 2
+                                    <div id="pageNavSlider" class="boxShadow pageFocusBlock navPadding" style="">
+                                        <div class="sc_slider sc_slider_swiper sc_slider_controls sc_slider_controls_top sc_slider_nopagination sc_slider_noautoplay swiper-slider-container">
+                                            <ul class="slides swiper-wrapper" data-current-slide="1">
+                                                <li class="swiper-slide">
+                                                    <div class="pageNumber">
+                                                        <table>
+                                                            <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    <a href="#" class="active">1</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="#">2</a>
+                                                                </td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="flex-direction-nav">
+                                            <li>
+                                                <a class="flex-prev" href="#">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="flex-next" href="#">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="pager_next ico right squareButton light">
+                                    <a href="#">Next </a>
+                                </li>
+                                <li class="pager_last ico right squareButton light">
+                                    <a href="#">Last </a>
+                                </li>
+                            </ul>
+                        </div>#}
+
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

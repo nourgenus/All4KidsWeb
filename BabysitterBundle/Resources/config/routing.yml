@@ -1,0 +1,51 @@
+babysitter_homepage:
+    path:     /babysitter_homepage
+    defaults: { _controller: BabysitterBundle:Default:index }
+admin_babysitter_list:
+    path:     /admin_babysitter_list
+    defaults: { _controller: BabysitterBundle:Default:adminBabysitterList}
+full_info:
+    path:     /full_info/{id}
+    defaults: { _controller: BabysitterBundle:Default:fullInfo }
+desactiver:
+    path:     /desactiver/{id}
+    defaults: { _controller: BabysitterBundle:Default:desactiver }
+activer:
+    path:     /activer/{id}
+    defaults: { _controller: BabysitterBundle:Default:activer }
+babysitter_near_to_parent:
+    path:     /near_me/{id}
+    defaults: { _controller: BabysitterBundle:Default:babysitterNearToParent }
+parent_babysitter_list:
+    path:     /parent_babysitter_list
+    defaults: { _controller: BabysitterBundle:Default:parentBabysitterList}
+parent_babysitter_selectionne:
+    path:     /parent_babysitter_selectionne/{id}
+    defaults: { _controller: BabysitterBundle:Default:parentBabysitterSelectione }
+reserver_babysitter:
+    path:     /reserver_babysitter
+    defaults: { _controller: BabysitterBundle:Default:reserverBabysitter}
+admin_ajouter_babysitter:
+    path:     /admin_ajouter_babysitter
+    defaults: { _controller: BabysitterBundle:Default:adminAjouterBabysitter}
+babysitter_conversations:
+    path:     /babysitter_conversations
+    defaults: { _controller: BabysitterBundle:BabysitterMessage:conversation}
+Babysitter_conversation_view:
+    path:     /babysitter_conversation_view/{id}/{page}
+    defaults: { _controller: BabysitterBundle:BabysitterMessage:conversationMessages }
+plannifier_babysitter:
+    path:     /plannifier_babysitter/{baby}/{id}/{date}
+    defaults: { _controller: BabysitterBundle:Default:plannifierBabysitter }
+parent_reservations:
+    path:     /parent_reservations/{id}
+    defaults: { _controller: BabysitterBundle:Default:parentReservations }
+babysitter_demandes:
+    path:     /babysitter_demandes/{id}
+    defaults: { _controller: BabysitterBundle:Default:babysitterDemandes }
+babysitter_annuler_demande:
+    path:     /babysitter_annuler_demande/{id}
+    defaults: { _controller: BabysitterBundle:Default:babysitterAnnulerDemandes }
+babysitter_confirmer_demande:
+    path:     /babysitter_confirmer_demandes/{id}
+    defaults: { _controller: BabysitterBundle:Default:babysitterConfirmerDemandes }

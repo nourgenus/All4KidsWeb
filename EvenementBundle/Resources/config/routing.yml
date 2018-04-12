@@ -1,0 +1,55 @@
+evenement_homepage:
+    path:     /
+    defaults: { _controller: EvenementBundle:Default:index }
+_lister:
+    path:     /ListerEvenement
+    defaults: { _controller: EvenementBundle:Evenement:Lister }
+_consulter:
+    path:     /Consulter/{id}
+    defaults: { _controller: EvenementBundle:Evenement:ConsulterEvenement }
+_rating:
+    path:     /rating/{id}/{ip}
+    defaults: { _controller: EvenementBundle:Evenement:AjoutRating }
+_likes:
+    path:     /like/{id}/{ip}
+    defaults: { _controller: EvenementBundle:Evenement:AjouterLikes }
+_dislike:
+    path:     /dislike/{ip}/{id}
+    defaults: { _controller: EvenementBundle:Evenement:AjouterDisLikes }
+_commentaire:
+    path:     /commentaire/{id}/{ip}
+    defaults: { _controller: EvenementBundle:Evenement:AjouterCommentaire }
+_participer:
+    path:     /participer/{id}
+    defaults: { _controller: EvenementBundle:Evenement:Participer }
+afficherevent:
+    path:     /afficherevent
+    defaults: { _controller: EvenementBundle:Evenement:afficherevent }
+supprimerevent:
+    path:     /supprimerevent/{id}/
+    defaults: { _controller: EvenementBundle:Evenement:supprimerevent}
+ajouterevent:
+    path:     /ajouterevent
+    defaults: { _controller: EvenementBundle:Evenement:ajouterevent }
+afficherparc:
+    path:     /afficherparc
+    defaults: { _controller: EvenementBundle:Evenement:afficherparc }
+supprimerparc:
+    path:     /supprimerparc/{id}/
+    defaults: { _controller: EvenementBundle:Evenement:supprimerparc}
+ajouterparc:
+    path:     /ajouterparc
+    defaults: { _controller: EvenementBundle:Evenement:ajouterparc }
+modifierparc:
+    path:     /modifierparc/{id}/
+    defaults: { _controller: EvenementBundle:Evenement:modifierparc}
+afficherparcs:
+    path:     /afficherparcs
+    defaults: { _controller: EvenementBundle:Evenement:afficherparcs}
+modifierevent:
+    path:     /modifierevent/{id}/
+    defaults: { _controller: EvenementBundle:Evenement:modifierevent}
+
+
+
+

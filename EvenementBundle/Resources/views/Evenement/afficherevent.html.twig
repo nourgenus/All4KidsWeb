@@ -1,0 +1,74 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">List des Evenements</h3>
+
+            <div class="box-tools pull-right">
+                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                </button>
+                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="table-responsive">
+
+                <table class="table no-margin">
+                    <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Prix</th>
+                        <th>Adresse</th>
+                        <th>Categorie</th>
+                        <th>Date_debut</th>
+                        <th>date_fin</th>
+                        <th>Categorie</th>
+                        <th>Organisateur</th>
+
+                        <th>S</th>
+                        <th>M</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td>{{ event.nom }}</td>
+                            <td>{{ event.description[:50] }}(..)</td>
+                            <td>{{ event.prix  }} </td>
+                            <td>{{ event.adresse  }} </td>
+                            <td>{{ event.categorie  }} </td>
+                            <td>{{ event.datedeb|date('y-m-d')  }} </td>
+                            <td>{{ event.datefin|date('y-m-d')   }} </td>
+                            <td>{{ event.categorie  }} </td>
+                            <td>{{ event.organisateur  }} </td>
+
+                            <td><span class="label label-info"><a href="{{ path('supprimerevent', { 'id': event.id }) }}">Supprimer</a></span></td>
+                            <td><span class="label label-info"> <a href="{{ path('modifierevent', { 'id': event.id }) }}">Modifier</a></span></td>
+
+
+
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- /.table-responsive -->
+        </div>
+
+
+
+
+        <!-- /.box-body -->
+        <div class="box-footer clearfix">
+            <a href="{{ path('ajouterevent') }}">Ajouter un event</a>
+
+        </div>
+        <!-- /.box-footer -->
+    </div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends '::base_admin.html.twig' %}
+{% block fos_user_content %}
+
+    <section class="content">
+        <div class="row">
+            {% for babysitter in babysitters %}
+                {% if babysitter.enabled %}
+                    <div class="col-md-4">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-aqua-active">
+                                <h3 class="widget-user-username">{{ babysitter.nom }}&nbsp;{{ babysitter.prenom }}</h3>
+
+                            </div>
+                            <div class="widget-user-image">
+                                {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png')) %}
+                                    {% set imagePath = 'images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png' %}
+                                {% else %}
+                                    {% set imagePath = 'images/babysitter/inconnu.png' %}
+                                {% endif %}
+                                <img class="img-circle" src="{{ asset(imagePath)}}" alt="User Avatar" style="height: 100px;width: 100px;border-radius: 50%;">
+                            </div>
+                            <div class="user-body"><br><br>
+                                <div class="row">
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Date de naissance:</h5>
+                                            <span class="description-text">{{ babysitter.dateNaissance|date("d/m/Y") }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Téléphone</h5>
+                                            <span class="description-text">{{ babysitter.tel }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Salaire</h5>
+                                            <span class="description-text">{{ babysitter.salaire }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    <a href="{{path ('full_info',{'id':babysitter.id})}}" class="users-list-name">Full info</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{path ('desactiver',{'id':babysitter.id})}}" class="btn btn-default btn-danger btn-default">désactiver le compte</a>
+                                </div>
+                            </div>
+
+                            <!-- /.widget-user -->
+                        </div>
+                    </div>
+                {% endif %}
+                {% if babysitter.enabled==false %}
+                    <div class="col-md-4">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="box box-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-aqua-active">
+                                <h3 class="widget-user-username">{{ babysitter.nom }}&nbsp;{{ babysitter.prenom }}</h3>
+
+                            </div>
+                            <div class="widget-user-image">
+                                {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png')) %}
+                                    {% set imagePath = 'images/babysitter/'~babysitter.username~'_'~babysitter.id~'.png' %}
+                                {% else %}
+                                    {% set imagePath = 'images/babysitter/inconnu.png' %}
+                                {% endif %}
+                                <img class="img-circle" src="{{ asset(imagePath)}}" alt="User Avatar" style="height: 100px;width: 100px;border-radius: 50%;">
+                            </div>
+                            <div class="user-body"><br><br>
+                                <div class="row">
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Date de naissance:</h5>
+                                            <span class="description-text">{{ babysitter.dateNaissance|date("d/m/Y") }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Téléphone</h5>
+                                            <span class="description-text">{{ babysitter.tel }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-sm-4">
+                                        <div class="description-block">
+                                            <h5 class="description-header">Salaire</h5>
+                                            <span class="description-text">{{ babysitter.salaire }}</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                    <!-- /.col -->
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    <a href="{{path ('full_info',{'id':babysitter.id})}}" class="users-list-name">Full info</a>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="{{path ('activer',{'id':babysitter.id})}}" class="btn btn-default btn-success btn-default">activer le compte</a>
+                                </div>
+                            </div>
+
+                            <!-- /.widget-user -->
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

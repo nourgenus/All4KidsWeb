@@ -1,0 +1,96 @@
+{% extends 'base_parent.html.twig' %}
+{% block fos_user_content %}
+
+
+
+    <!DOCTYPE html>
+    <html lang="en-US">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="format-detection" content="telephone=no">
+        <title>KidsCare HTML</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico"/>
+        <!--[if lt IE 9]>
+        <script src="js/vendor/html5.js" type="text/javascript"></script>
+        <![endif]-->
+        <link rel='stylesheet' href="{{ asset('user/css/__packed.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('user/css/fontello/css/fontello.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('user/css/fontello/css/animation.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('user/css/style.css') }}" type='text/css' media='all'/>
+        <link rel='stylesheet' href="{{ asset('user/css/shortcodes.css') }}" type='text/css' media='all'/>
+        <link id="theme-skin-css" rel='stylesheet' href="{{ asset('user/css/healthcare.css') }}" type='text/css' media='all'/>
+
+        <link id="theme-skin-css" rel='stylesheet' href="{{ asset('css/kidscare.css') }}" type='text/css' media='all'/>
+        <style id='theme-skin-inline-css' type='text/css'></style>
+        <link rel='stylesheet' href='css/responsive.css' type='text/css' media='all'/>
+
+        <!--<link rel='stylesheet' href='custom_tools/css/customizer.css' type='text/css' media='all'/>-->
+
+    </head>
+
+    <body class="single single-post single-format-standard themerex_body wide top_panel_above theme_skin_kidscare">
+
+    <div class="main_content">
+        <div class="boxedWrap">
+            <div id="topOfPage" class="topTabsWrap">
+                <div class="main">
+                    <div class="speedBar">
+                        <a class="home" href="index.html">Home</a>
+                        <span class="breadcrumbs_delimiter">
+                            <i class="icon-right-open-mini"></i>
+                        </span>
+                        <a class="all" href="#">All Posts</a>
+                        <span class="breadcrumbs_delimiter">
+                            <i class="icon-right-open-mini"></i>
+                        </span>
+                        <span class="current">statistique</span>
+                    </div>
+                    <h3 class="pageTitle h3">Statistique des produits % categories</h3>
+                </div>
+            </div>
+            {% for key, value in array %}
+                {% set nbr = nbr + value[1] %}
+            {% endfor %}
+
+            {#NDSJANDJKASNDJKNASJKDNSAKNDKJSANDKJSANDKJASNDKJASNDKJAS#}
+            <div class="sc_section sc_alignright columns1 margin_top_small" style="margin-right: 30%">
+                <h2>Statistique</h2>
+                <div class="sc_skills sc_skills_bar sc_skills_horizontal" data-type="bar" data-subtitle="Skills" data-dir="horizontal" style="margin-left: 5%">
+                    {% for key, value in array %}
+                        <div class="sc_skills_info">{{ value['categorie'] }}</div>
+                        <div class="sc_skills_item sc_skills_style_1 odd first inited">
+                            <div class="sc_skills_count" style="width: {{ value[1]*100 / nbr }}%;">
+                                <div class="sc_skills_total" data-start="0" data-stop="98" data-step="1" data-max="100" data-speed="35" data-duration="3430" data-ed="%">
+                                   <b> {{ value[1]*100 / nbr }}% </b>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {#NDSJANDJKASNDJKNASJKDNSAKNDKJSANDKJSANDKJASNDKJASNDKJAS#}{#NDSJANDJKASNDJKNASJKDNSAKNDKJSANDKJSANDKJASNDKJASNDKJAS#}
+
+        </div>
+    </div>
+
+
+
+
+    <script type='text/javascript' src="{{ asset('user/js/vendor/jquery-1.11.3.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/vendor/jquery-migrate.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/vendor/revslider/rs-plugin/js/jquery.themepunch.revolution.min.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/custom/__main.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/vendor/__packed.js') }}"></script>
+    <!--<script type='text/javascript' src='js/vendor/SmoothScroll.min.js'></script>-->
+    <script type='text/javascript' src="{{ asset('user/js/custom/shortcodes_init.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/custom/_utils.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/custom/_front.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('user/js/vendor/diagram/chart.min.js') }}"></script>
+
+    <!--<script type='text/javascript' src='custom_tools/js/_customizer.js'></script>-->
+
+    </body>
+    </html>
+
+{% endblock %}

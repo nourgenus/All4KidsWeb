@@ -55,19 +55,27 @@
 
                                     <article class="isotopeElement post_format_standard odd flt_71 flt_66 flt_61 isotopeElementShow" style="opacity: 1; width: 450px; position: absolute; left: 0px; top: 0px;">
                                         <div class="isotopePadding">
+
                                             <div class="thumb hoverIncrease inited" data-image="images/1317x2000.png" data-title="Summer Childcare Questions">
                                                 <img alt="Summer Childcare Questions" src="{{  asset('images/blog/'~garderie.nom~'_'~garderie.id~'.png') }}">
                                                 <span class="hoverShadow"></span><a href="{{  asset('images/blog/'~garderie.nom~'_'~garderie.id~'.png') }}" title="Summer Childcare Questions" rel="prettyPhoto[slideshow]" class="inited"><span class="hoverIcon"></span></a></div>
+                                        {% if app.user %}
+                                            <h4>
+                                                <a href="{{  path('affichergarderie1',{'id': garderie.id} )  }}">{{ garderie.nom }}</a>
+                                            </h4>
+                                            {% endif %}
+                                            {#<a href="{{ ('images/pdf/mati_3.pdf') }}">aaaaaaaaaaaaaa</a>#}
 
                                             <p>Le nom est  : {{ garderie.nom}}</p>
+                                            <p>Le prix est : {{ garderie.prix }}</p>
                                             <div class="masonryInfo">
                                                 Description
                                                 <a href="#" class="post_date">{{ garderie.description[:50] }} (...) </a>
                                             </div>
-
-                                            <span class="inlineShadow"></span>
                                         </div>
+
                                     </article>
+
 
                                 {% endfor %}
                             </section>

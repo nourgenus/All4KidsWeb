@@ -1,0 +1,90 @@
+{% extends '::base_babysitter.html.twig' %}
+{% block fos_user_content %}
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="{{ asset('dashboard_babysitter') }}">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <span class="current">Mes messages</span>
+            </div>
+            <h3 class="pageTitle h3">Mes messages</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+
+                        <section class="masonry isotope" data-columns="0">
+                            <article class="isotopeElement isotopeElementShow" style="opacity: 1; width: 50%; position: center">
+                                <div class="isotopePadding">
+
+
+                                    <div id="sc_tabs_1_1" class="sc_tabs_content odd first">
+                                        <div id="sc_tabs_1_1_scroll" class="sc_scroll sc_scroll_vertical">
+                                            <div class="sc_scroll_wrapper swiper-wrapper">
+                                                <div class="sc_scroll_slide swiper-slide">
+                                                    {% if conversations|length > 0 %}
+                                                        {% for conversation in conversations %}
+
+                                                            {% set firstUnread = conversation.firstUnreadMessage(app.user) %}
+                                                            {% if(file_exist('C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/all4kids/web/images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png')) %}
+                                                                {% set imagePath = 'images/parents/'~members_list(conversation, app.user).username~'_'~members_list(conversation, app.user).id~'.png' %}
+                                                            {% else %}
+                                                                {% set imagePath = 'images/parents/inconnu.png' %}
+                                                            {% endif %}
+                                                            <figure class="sc_image  sc_image_align_left sc_image_shape_square margin_right_small">
+                                                                <img src="{{ asset(imagePath) }}" alt="" style="height: 100px;width: 100px;border-radius: 50%;"/>
+                                                            </figure>
+                                                            <h4 class="sc_title sc_title_regular">
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, conversation.messages.last)}) }}">
+                                                                    {{ members_list(conversation, app.user) }}
+                                                                </a>
+                                                            </h4>
+                                                            {% if firstUnread %}
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, firstUnread) }) }}">
+                                                                    {{ firstUnread.body }}
+                                                                    <small>{{ firstUnread.date|date('m/d/Y h:ia') }}</small>
+                                                                </a>
+                                                                <strong>(New)</strong>
+                                                            {% else %}
+                                                                <a href="{{ path('Babysitter_conversation_view', { 'id': conversation.id, 'page': get_message_page(conversation, conversation.messages.last)}) }}">
+                                                                    {{ conversation.messages.last.body }}
+                                                                    <small>{{ conversation.messages.last.date|date('m/d/Y h:ia') }}</small>
+                                                                </a>
+                                                            {% endif %}
+                                                            <br><hr><br>
+                                                        {% endfor %}
+                                                    {% else %}
+                                                        <p>
+                                                            You don't have any conversation.
+                                                            You will receive a notification when you receive a message.
+                                                        </p>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            <div id="sc_tabs_1_1_scroll_bar" class="sc_scroll_bar sc_scroll_bar_vertical sc_tabs_1_1_scroll_bar"> </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+
+
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends '::base_interlocuteur.html.twig' %}
+{% block fos_user_content %}
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="{{ asset('index.html') }}">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <a class="all" href="#">Alimentation</a>
+                <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+                <span class="current">Quiiiiz</span>
+            </div>
+            <h3 class="pageTitle h3">Quiz </h3>
+        </div>
+    </div>
+
+    <div class="mainWrap with_sidebar sideBarRight">
+    <div class="main">
+    <div class="content">
+
+    <section class="no_margin no_padding">
+        <div class="container">
+            <div class="masonryWrap">
+
+
+
+{% if app.user %}
+                <section class="masonry isotope inited" data-columns="4" style="position: relative; height: 1441.92px;">
+
+
+                    <article class="isotopeElement post_format_standard odd flt_64 isotopeElementShow" style="width: 300px; position: absolute; left: 0px; top: 0px; opacity: 1;">
+                        <div class="isotopePadding">
+                            <h1>Quiz 1</h1>
+                        </div>
+                        <br/>
+                        <div id='quiz'></div>
+                        <div class='button' id='next'><a href='#'>Next</a></div>
+                        <div class='button' id='prev'><a href='#'>Prev</a></div>
+                        <div class='button' id='start'> <a href='#'>Start Over</a></div>
+                        <!-- <button class='' id='next'>Next</a></button>
+                        <button class='' id='prev'>Prev</a></button>
+                        <button class='' id='start'> Start Over</a></button> -->
+
+
+                        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+                        <script type="text/javascript" src='questions.json'></script>
+                        <script type='text/javascript' src="{{ asset('quiz/jsquiz.js') }}"></script>
+
+
+                    </article>
+
+                </section>
+
+                {% else  %}
+                    <br><br><br><br><br>                    <br><br><br><br><br>
+
+                    <center><h3>vous devez etre conncte pour passer un quiz</h3></center>
+                    <br><br><br><br><br>                    <br><br><br><br><br>
+
+
+{% endif %}
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+
+{% endblock %}

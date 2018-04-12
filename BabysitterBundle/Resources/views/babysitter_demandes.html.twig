@@ -1,0 +1,130 @@
+{% extends '::base_babysitter.html.twig' %}
+{% block fos_user_content %}
+<div id="topOfPage" class="topTabsWrap">
+    <div class="main">
+        <div class="speedBar">
+            <a class="home" href="{{ asset('dashboard_babysitter') }}">Accueil</a>
+            <span class="breadcrumbs_delimiter">
+              <i class="icon-right-open-mini"></i>
+            </span>
+            <span class="current">Mes demandes</span>
+        </div>
+        <h3 class="pageTitle h3">Mes demandes</h3>
+    </div>
+</div>
+
+
+
+
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+
+                <section class="no_margin no_padding">
+                    <div class="container">
+
+                        <section class="masonry isotope" data-columns="0">
+                            <article class="isotopeElement isotopeElementShow" style="opacity: 1; width: 100%; position: center;">
+                                <div class="isotopePadding">
+                                    {% if demandes|length > 0 %}
+                                        <div class="sc_table sc_table_style_1 sc_table_size_big">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        Parent
+                                                    </td>
+                                                    <td>
+                                                        Adresse
+                                                    </td>
+                                                    <td>
+                                                        Téléphone
+                                                    </td>
+                                                    <td>
+                                                        Date souhaité de réservation
+                                                    </td>
+                                                    <td>
+                                                        Confirmation de réservation
+                                                    </td>
+                                                </tr>
+                                                {% for demande in demandes %}
+                                                    {% if demande.status == 1 %}
+                                                        <tr style="background-color: lightgreen">
+                                                            <td>
+                                                                {{ demande.parents.nom }}&nbsp;{{ demande.parents.prenom }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.adresse }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.tel }}&nbsp
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.date|date('d-m-Y') }}
+                                                            </td>
+                                                            <td>
+                                                                Vous avez confirmez cette réservation.<br>Cliquer <a href="{{ path('babysitter_annuler_demande',{'id': demande.id }) }}" style="color: blue;text-decoration: underline;">ICI</a> pour annuler la confirmation.
+                                                            </td>
+                                                        </tr>
+                                                    {% elseif demande.status == 0 %}
+                                                        <tr style="background-color: lightgoldenrodyellow">
+                                                            <td>
+                                                                {{ demande.parents.nom }}&nbsp;{{ demande.parents.prenom }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.adresse }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.tel }}&nbsp
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.date|date('d-m-Y') }}
+                                                            </td>
+                                                            <td>
+                                                                Cette réservation est en attente de voter confirmation.<br>Cliquer <a href="{{ path('babysitter_confirmer_demande',{'id': demande.id }) }}" style="color: blue;text-decoration: underline;">ICI</a> pour la confirmer.
+                                                                <br>Cliquer <a href="{{ path('babysitter_annuler_demande',{'id': demande.id }) }}" style="color: blue;text-decoration: underline;">ICI</a> pour l'annuler.
+                                                            </td>
+                                                        </tr>
+                                                    {% else %}
+                                                        <tr style="background-color: #fca1a1">
+                                                            <td>
+                                                                {{ demande.parents.nom }}&nbsp;{{ demande.parents.prenom }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.adresse }}
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.parents.tel }}&nbsp
+                                                            </td>
+                                                            <td>
+                                                                {{ demande.date|date('d-m-Y') }}
+                                                            </td>
+                                                            <td>
+                                                                Cette réservation à été annulé.
+                                                            </td>
+                                                        </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                <tr></tr>
+                                            </table>
+                                        </div>
+                                    {% else %}
+                                        <h3>Vous n'avez aucune réservation pour le moment.</h3><br>
+                                    {% endif %}
+
+                                </div>
+                            </article>
+
+
+
+
+                        </section>
+
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

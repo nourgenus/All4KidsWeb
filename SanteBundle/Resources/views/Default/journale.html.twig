@@ -1,0 +1,53 @@
+{% extends '::base_parent.html.twig' %}
+
+{% block fos_user_content %}
+
+
+
+
+    <div class="sc_tabs sc_tabs_style_2 height_style_1" data-active="0">
+        <ul class="sc_tabs_titles">
+            <li class="tab_names last">
+                <a href="#sc_tabs_1_2" class="theme_button" id="sc_tabs_1_2_tab">Injectées</a>
+            </li>
+        </ul>
+        <div id="sc_tabs_1_2" class="sc_tabs_content even">
+            <div id="sc_tabs_1_2_scroll" class="sc_scroll sc_scroll_vertical">
+                <div class="sc_scroll_wrapper swiper-wrapper">
+                    <div class="sc_scroll_slide swiper-slide">
+                        {% for mod in query%}
+                            <div class="sc_title_icon sc_title_left sc_size_medium icon-check" >
+                            </div>
+                            <h4 class="sc_title sc_title_regular">  {{ mod.vaccin.nom }}</h4>
+                            {{ mod.vaccin.description }}
+                        <div class="sc_line sc_line_style_solid margin_top_mini"> </div>
+
+
+
+                        {% endfor %}
+                </div>
+                <div id="sc_tabs_1_2_scroll_bar" class="sc_scroll_bar sc_scroll_bar_vertical sc_tabs_1_2_scroll_bar">
+                </div>
+            </div>
+        </div>
+    </div>
+
+                   <!--
+                    <div class="sc_button sc_button_style_light sc_button_size_huge squareButton fullSize light huge  ico margin_top_middle">
+                        <a href="#popup_shortcode_2" class="icon-code user-popup-link">Get shortcode</a>
+                    </div>
+                    <div id="popup_shortcode_2" class="sc_popup sc_popup_light mfp-with-anim mfp-hide">
+                        <h4>Shortcode &#8220;Tabs&#8221; (without scrolling)</h4>
+                        <p>Shortcode text for example below:</p>
+                        <pre>&lt;div class="sc_tabs sc_tabs_style_2" data-active="0"&gt; &lt;ul class="sc_tabs_titles"&gt; &lt;li class="tab_names first"&gt; &lt;a href="#sc_tabs_2_1" class="theme_button" id="sc_tabs_2_1_tab"&gt;Tab 1&lt;/a&gt; &lt;/li&gt; &lt;li class="tab_names last"&gt; &lt;a href="#sc_tabs_2_2" class="theme_button" id="sc_tabs_2_2_tab"&gt;Tab 2&lt;/a&gt; &lt;/li&gt; &lt;/ul&gt; &lt;div id="sc_tabs_2_1" class="sc_tabs_content odd first"&gt; &lt;div class="sc_title_icon sc_title_left sc_size_medium icon-twitter-1 sc_title_bg sc_bg_circle"&gt; &lt;/div&gt; &lt;h4 class="sc_title sc_title_iconed"&gt;Title 1 with icon left&lt;/h4&gt; Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor. &lt;div class="sc_line sc_line_style_solid"&gt; &lt;/div&gt; &lt;div class="sc_title_icon sc_title_left sc_size_medium icon-chart-pie"&gt; &lt;/div&gt; &lt;h4 class="sc_title sc_title_iconed"&gt;Title 1 with icon left&lt;/h4&gt; Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor. &lt;/div&gt; &lt;div id="sc_tabs_2_2" class="sc_tabs_content even"&gt; &lt;div class="sc_title_icon sc_title_left sc_size_medium icon-diamond"&gt; &lt;/div&gt; &lt;h4 class="sc_title sc_title_iconed"&gt;Title 1 with icon left&lt;/h4&gt; Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor. &lt;div class="sc_line sc_line_style_solid"&gt; &lt;/div&gt; &lt;div class="sc_title_icon sc_title_left sc_size_medium icon-skype-1 sc_title_bg sc_bg_circle"&gt; &lt;/div&gt; &lt;h4 class="sc_title sc_title_iconed"&gt;Title 1 with icon left&lt;/h4&gt; Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor. &lt;/div&gt; &lt;/div&gt;</pre>
+                    </div>
+
+
+    </div>    -->
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+

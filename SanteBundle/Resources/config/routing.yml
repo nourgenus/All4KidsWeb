@@ -1,0 +1,42 @@
+sante_homepage:
+    path:     /ajoutA
+    defaults: { _controller: SanteBundle:Default:index}
+afficher:
+    path:     /listA
+    defaults: { _controller: SanteBundle:Default:list}
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: SanteBundle:Default:delete}
+update:
+    path:     /update/{id}
+    defaults: { _controller: SanteBundle:Default:update}
+all:
+    path:    /all
+    defaults: { _controller: SanteBundle:Default:all}
+addvin:
+    path:   /addv
+    defaults: { _controller: SanteBundle:Default:indexvacin}
+allvin:
+    path:   /allv
+    defaults: { _controller: SanteBundle:Default:allvacin}
+editvin:
+    path:   /editv/{id}
+    defaults: { _controller: SanteBundle:Default:editvacin}
+deletevin:
+    path:   /deletev/{id}
+    defaults: { _controller: SanteBundle:Default:deletevacin}
+indexparent:
+    path:   /indexparernt/{id}
+    defaults: { _controller: SanteBundle:Default:indexparent}
+enfantparent:
+    path:  /parentchild/{id}
+    defaults: { _controller: SanteBundle:Default:parentchild}
+journale:
+    path:  /journalev/{id}
+    defaults: { _controller: SanteBundle:Default:journale}
+prochaine:
+    path:  /prochainev/{id}
+    defaults: { _controller: SanteBundle:Default:prochainev}
+parentpharmacie:
+    path:  /parentf
+    defaults: { _controller: SanteBundle:Default:parentph}

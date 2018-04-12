@@ -1,0 +1,84 @@
+{% extends 'base_interlocuteur.html.twig' %}
+{% block fos_user_content %}
+
+
+    <div id="topOfPage" class="topTabsWrap">
+        <div class="main">
+            <div class="speedBar">
+                <a class="home" href="#">Accueil</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <a class="all" href="{{  path('afficherproduit')}}">Listes des produits</a>
+                <span class="breadcrumbs_delimiter">
+							<i class="icon-right-open-mini"></i>
+						</span>
+                <span class="current">ajouter</span>
+            </div>
+            <h3 class="pageTitle h3">Ajouter un produit</h3>
+        </div>
+    </div>
+
+    <div class="mainWrap without_sidebar">
+        <div class="main">
+            <div class="content">
+                <section class="post no_margin post_format_standard postAlter page type-page">
+                    <article class="post_content">
+                        <div class="post_text_area">
+
+
+
+                            <section class="no_padding">
+                                <div class="container">
+                                    <div class="columnsWrap sc_columns sc_columns_count_3 margin_top_middle margin_bottom_middle">
+                                        <div class="columns2_3 sc_column_item sc_column_item_1 odd first span_2">
+                                            <div class="sc_contact_form sc_contact_form_contact contact_form_1">
+                                                <h1 class="title">Coordonnées</h1>
+                                                <form class="contact_1" method="post"  enctype="multipart/form-data">
+                                                    <div class="columnsWrap">
+                                                        <div class="columns1_3">
+                                                            <label class="required" for="contact_form_username">Nom</label>
+                                                            <input type="text" name="nom" id="contact_form_username">
+                                                        </div>
+                                                        <div class="columns1_3">
+                                                            <label class="required" for="contact_form_username">description</label>
+                                                            <input type="text" name="description" id="contact_form_username">
+                                                        </div>
+                                                        <div class="columns1_3">
+                                                            <label class="required" for="contact_form_email">categorieee</label>
+                                                            <input type="text" name="categorie" id="contact_form_email">
+                                                        </div>
+                                                        <div class="columns1_3">
+                                                            <label class="required" for="contact_form_email">prix</label>
+                                                            <input type="text" name="prix" id="contact_form_email">
+                                                        </div>
+
+                                                        <div class="columns1_3">
+                                                            <label class="required" for="contact_form_image">Image</label>
+                                                            <input type="file" name="imgproduit" id="contact_form_image">
+                                                        </div>
+
+
+                                                        <div class="sc_contact_form_button">
+                                                            <div class="squareButton sc_button_size sc_button_style_global global ico">
+                                                                <button type="submit" name="contact_submit" class="contact_form_submit icon-comment-1">Ajouter produit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
